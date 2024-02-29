@@ -1,7 +1,11 @@
 import "./App.css";
+import { MantineProvider } from "@mantine/core";
 
 function App() {
-  return <></>;
+  return (
+    /*Wrapper for Mantine library */
+    <MantineProvider></MantineProvider>
+  );
 }
 
 export default App;
