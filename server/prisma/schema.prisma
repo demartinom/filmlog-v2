@@ -14,5 +14,35 @@ datasource db {
 }
 
 model FilmStock {
-  id Int @id @default(autoincrement())
+  id      Int      @id @unique @default(autoincrement())
+  name    String
+  ISO     Int
+  maker   Maker    @relation(fields: [makerId], references: [id])
+  formats String[]
+  type    String
+  makerId Int
+  Roll    Roll[]
+  process String
+  img     String?
+}
+
+model Maker {
+  id   Int         @id @unique @default(autoincrement())
+  name String      @unique
+  Film FilmStock[]
+}
+
+model User {
+  id   String @id @unique @default(cuid())
+  Roll Roll[]
+}
+
+model Roll {
+  id           Int       @id @unique @default(autoincrement())
+  film         FilmStock @relation(fields: [filmId], references: [id])
+  photographer User      @relation(fields: [userId], references: [id])
+  dateStarted  DateTime  @default(now())
+  dateFinished DateTime?
+  filmId       Int
+  userId       String
 }
