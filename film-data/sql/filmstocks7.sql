@@ -1,0 +1,20 @@
+INSERT INTO "FilmStock" ("name", "makerId", "type", "ISO", "formats", "process", "img")
+VALUES
+ ('Rollei RPX 100', 23 'Black and White negative', 100, '{35mm, 120, Sheet}', 'BW', 'http://i0.wp.com/emulsive.org/wp-content/uploads/2018/07/Rollei-RPX-100.jpg'),
+    ('Rollei RPX 400', 23 'Black and White negative', 400, '{35mm, 120, Sheet}', 'BW', 'http://i0.wp.com/emulsive.org/wp-content/uploads/2018/07/Rollei-RPX-400.jpg'),
+    ('Rollei Superpan 200', 23 'Black and White negative', 200, '{35mm, 120}', 'BW', 'http://i0.wp.com/emulsive.org/wp-content/uploads/2018/07/Rollei-Superpan-200.jpg'),
+    ('Shanghai GP3', 24, 'Black and White negative', 100, '{120, 3.25×4.25″, 5×7″, 20×24″}', 'BW', 'https://i1.wp.com/emulsive.org/wp-content/uploads/2018/08/film-shanghai-gp3.jpg'),
+    ('Silberra PAN100', 25, 'Black and White negative', 100, '{35mm,120}', 'BW', 'https://i0.wp.com/emulsive.org/wp-content/uploads/2017/10/Silberra-PAN100-Box.jpg'),
+    ('Silberra PAN160', 25, 'Black and White negative', 160, '{35mm,120}', 'BW', 'https://i0.wp.com/emulsive.org/wp-content/uploads/2017/10/Silberra-PAN160-Box.jpg'),
+    ('Silberra PAN200', 25, 'Black and White negative', 200, '{35mm,120}', 'BW', 'https://i0.wp.com/emulsive.org/wp-content/uploads/2017/10/Silberra-PAN200-Box.jpg'),
+    ('Silberra ULTIMA 100', 25, 'Black and White negative', 100, '{35mm,120}', 'BW', 'https://i1.wp.com/emulsive.org/wp-content/uploads/2018/03/Logo-Silberra.png'),
+    ('Silberra U200', 25, 'Black and White negative', 200, '{35mm}', 'BW', 'https://i1.wp.com/emulsive.org/wp-content/uploads/2018/03/Logo-Silberra.png'),
+    ('Silberra U400', 25, 'Black and White negative', 200, '{35mm}', 'BW', 'https://i1.wp.com/emulsive.org/wp-content/uploads/2018/03/Logo-Silberra.png'),
+    ('Svema Blue Sensitive', 26, 'Black and White negative', 6, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Svema-Blue-1024x1024.jpg'),
+    ('Svema FN 64', 26, 'Black and White negative', 64, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Svema-FN64-100ft-1024x1024.jpg'),
+    ('Svema Foto100', 26, 'Black and White negative', 100, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Svema-Foto-100-1024x1024.jpg'),
+    ('Svema Foto 200', 26, 'Black and White negative', 200, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Svema-Foto-200-1024x1024.jpg'),
+    ('Svema Foto 400', 26, 'Black and White negative', 400, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Svema-Foto-400-1024x1024.jpg'),
+    ('Svema MZ3', 26, 'Black and White negative', 3, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Svema-MZ3sticker-1024x1024.jpg'),
+    ('Svema Super Positive Film', 26, 'Black and White negative', 0.8, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Svema-SuperPos-1024x1024.jpg'),
+    ('Tasma NK2', 27, 'Black and White negative', 100, '{35mm}', 'BW', 'https://i2.wp.com/emulsive.org/wp-content/uploads/2018/08/Tasma-NK2-1024x1024.jpg');
