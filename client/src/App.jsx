@@ -6,7 +6,7 @@ import "@mantine/core/styles.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // Page components
 import Home from "./pages/Home";
-import NavBar from "./pages/NavBar";
+import NavFooter from "./pages/NavFooter";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <MantineProvider>
         <Routes>
           {/*NavBar wrapper */}
-          <Route path="/" element={<NavBar />}>
+          <Route path="/" element={<NavFooter />}>
             <Route index element={<Home />}></Route>
           </Route>
         </Routes>
