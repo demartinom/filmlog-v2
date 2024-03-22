@@ -10,4 +10,12 @@ router.get("/all", async (req, res) => {
   res.json(allFilms);
 });
 
+// Get single film stock
+router.get("/:id", async (req, res) => {
+  let { id } = req.params;
+  id = parseInt(id);
+  const filmStock = await prisma.filmStock.findUnique({ where: { id } });
+  res.json(filmStock);
+});
+
 export default router;
