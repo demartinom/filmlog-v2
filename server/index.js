@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 app.use("/api/films", films);
 app.use("/api/makers", makers);
 app.use("/api/types", types);
-app.use("api/formats", formats);
+app.use("/api/formats", formats);
 
 const port = process.env.PORT;
 //Create server at port listed in port variable
