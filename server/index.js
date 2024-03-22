@@ -4,6 +4,7 @@ const app = express();
 // Router imports
 import films from "./routes/films.js";
 import makers from "./routes/makers.js";
+import types from "./routes/types.js";
 
 //GET request for home page
 app.get("/", (req, res) => {
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 // Routers
 app.use("/api/films", films);
 app.use("/api/makers", makers);
+app.use("/api/types", types);
 
 const port = 3000;
 //Create server at port listed in port variable
