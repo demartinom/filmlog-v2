@@ -5,11 +5,11 @@ export default function NavFooter() {
   return (
     <>
       <header>
-        <Group justify="space-between" px={20} py={10} bg="myColors.3">
+        <Group grow px={20} py={10} bg="myColors.3">
           <Text size="2rem">
             <Link to="/">FilmLog</Link>
           </Text>
-          <Group>
+          <Group justify="center">
             <Text size="2rem">
               <Link to="/explore">Explore</Link>
             </Text>
@@ -17,9 +17,11 @@ export default function NavFooter() {
               <Link to="/log">My Log</Link>
             </Text>
           </Group>
-          <Text size="2rem">
-            <Link to="/login">Login</Link>
-          </Text>
+          <Group justify="end">
+            <Text size="2rem">
+              <Link to="/login">Login</Link>
+            </Text>
+          </Group>
         </Group>
       </header>
       {/*Allows NavBar and Footer to render on all pages */}
