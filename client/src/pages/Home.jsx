@@ -1,11 +1,15 @@
-import { Center, Text, AppShellMain } from "@mantine/core";
+import { Text, AppShellMain, Stack } from "@mantine/core";
 
 export default function Home() {
   return (
     <AppShellMain>
-      <Center>
+      <Stack px={20}>
         <Text size="3rem">Welcome to FilmLog!</Text>
-      </Center>
+        <Text size="2rem">
+          A place where film enthusiasts can learn about film and track their
+          film rolls
+        </Text>
+      </Stack>
     </AppShellMain>
   );
 }
