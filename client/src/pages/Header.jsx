@@ -8,15 +8,13 @@ export default function Header() {
         <Text size="2rem">
           <Link to="/">FilmLog</Link>
         </Text>
-        <Group justify="center">
-          <Text size="2rem">
-            <Link to="/explore">Explore</Link>
-          </Text>
+        <Group justify="end">
           <Text size="2rem">
             <Link to="/log">My Log</Link>
           </Text>
-        </Group>
-        <Group justify="end">
+          <Text size="2rem">
+            <Link to="/explore">Explore</Link>
+          </Text>
           <Text size="2rem">
             <Link to="/login">Login</Link>
           </Text>
