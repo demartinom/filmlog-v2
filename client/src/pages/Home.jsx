@@ -1,3 +1,5 @@
+import { signInWithGitHub, signInWithGoogle, data } from "../oauth";
+
 export default function Home() {
-  return <main>Home</main>;
+  return <main></main>;
 }
