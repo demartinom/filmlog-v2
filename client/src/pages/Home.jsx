@@ -1,3 +1,5 @@
+
+import { signInWithGitHub, signInWithGoogle, data } from "../oauth";
 import { Text, AppShellMain, Stack } from "@mantine/core";
 
 export default function Home() {
@@ -12,4 +14,7 @@ export default function Home() {
       </Stack>
     </AppShellMain>
   );
+
+export default function Home() {
+  return <main></main>;
 }
