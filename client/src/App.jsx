@@ -1,12 +1,13 @@
 // Wrapper for Mantine Library
-import { MantineProvider, createTheme } from "@mantine/core";
+import { MantineProvider, createTheme, AppShell } from "@mantine/core";
 // Required CSS for mantine
 import "@mantine/core/styles.css";
 //Wrappers for React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // Page components
 import Home from "./pages/Home";
-import NavFooter from "./pages/NavFooter";
+import Header from "./pages/Header";
+import Footer from "./pages/Footer";
 
 // Array of colors for custom theme
 const myColors = [
@@ -29,12 +30,14 @@ function App() {
   return (
     <BrowserRouter>
       <MantineProvider theme={theme}>
-        <Routes>
-          {/*NavBar wrapper */}
-          <Route path="/" element={<NavFooter />}>
+        {/* AppShell to structure website */}
+        <AppShell header={{ height: 50 }} footer={{ height: 40 }}>
+          <Header />
+          <Routes>
             <Route index element={<Home />}></Route>
-          </Route>
-        </Routes>
+          </Routes>
+          <Footer />
+        </AppShell>
       </MantineProvider>
     </BrowserRouter>
   );
