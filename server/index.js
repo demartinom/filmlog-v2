@@ -1,17 +1,17 @@
-import express from "express";
+import express, { json } from "express";
 import process from "process";
 
 const app = express();
+//Allows express to return JSON to frontend
+app.use(json());
+
 // Router imports
 import films from "./routes/films.js";
 import makers from "./routes/makers.js";
 import types from "./routes/types.js";
 import formats from "./routes/formats.js";
 
-//GET request for home page
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
+
 
 // Routers
 app.use("/api/films", films);
