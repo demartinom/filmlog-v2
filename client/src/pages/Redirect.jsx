@@ -6,6 +6,7 @@ export default function Redirect() {
   let nav = useNavigate();
   async function redirect() {
     nav("/");
+    window.location.reload();
   }
   useEffect(() => {
     redirect();
