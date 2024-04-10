@@ -1,4 +1,4 @@
-import { signInWithGitHub, signInWithGoogle, signOut, data } from "../oauth";
+import { signInWithGitHub, signInWithGoogle, data } from "../oauth";
 import { Text, AppShellMain, Stack, Group, Button, Image } from "@mantine/core";
 
 export default function Home() {
