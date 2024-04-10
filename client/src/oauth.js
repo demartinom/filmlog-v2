@@ -11,6 +11,9 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 export const signInWithGoogle = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
+    options: {
+      redirectTo: "http://localhost:5173/redirect",
+    },
   });
   if (error) {
     console.error("Error signing in with Google:", error.message);
@@ -20,6 +23,9 @@ export const signInWithGoogle = async () => {
 export const signInWithGitHub = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
+    options: {
+      redirectTo: "http://localhost:5173/redirect",
+    },
   });
   if (error) {
     console.error("Error signing in with GitHub:", error.message);

@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
+import Redirect from "./pages/Redirect";
 
 // Array of colors for custom theme
 const myColors = [
@@ -35,6 +36,7 @@ function App() {
           <Header />
           <Routes>
             <Route index element={<Home />}></Route>
+            <Route element={<Redirect />} path="redirect"></Route>
           </Routes>
           <Footer />
         </AppShell>
