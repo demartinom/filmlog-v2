@@ -1,8 +1,7 @@
-import { signInWithGitHub, signInWithGoogle, data } from "../oauth";
+import { signInWithGitHub, signInWithGoogle } from "../oauth";
 import { Text, AppShellMain, Stack, Group, Button, Image } from "@mantine/core";
 
 export default function Home() {
-  console.log(data);
   return (
     <AppShellMain>
       {/* <BackgroundImage src={"./landing.jpg"} h={"100vh"}> */}
