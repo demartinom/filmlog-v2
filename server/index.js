@@ -10,14 +10,14 @@ import films from "./routes/films.js";
 import makers from "./routes/makers.js";
 import types from "./routes/types.js";
 import formats from "./routes/formats.js";
-
-
+import rolls from "./routes/rolls.js";
 
 // Routers
 app.use("/api/films", films);
 app.use("/api/makers", makers);
 app.use("/api/types", types);
 app.use("/api/formats", formats);
+app.use("/api/rolls", rolls);
 
 const port = process.env.PORT;
 //Create server at port listed in port variable
