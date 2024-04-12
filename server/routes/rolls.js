@@ -9,6 +9,7 @@ router.get("/:id", async (req, res) => {
   let { id } = req.params;
   const userRolls = await prisma.roll.findMany({
     where: { userId: id },
+    include: { film: true },
   });
   res.json(userRolls);
 });
