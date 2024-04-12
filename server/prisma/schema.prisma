@@ -35,6 +35,7 @@ model Maker {
 model Roll {
   id           Int       @id @unique @default(autoincrement())
   film         FilmStock @relation(fields: [filmId], references: [id])
+  format       String    @default("N/A")
   dateStarted  DateTime  @default(now())
   dateFinished DateTime?
   filmId       Int
