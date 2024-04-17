@@ -76,6 +76,12 @@ export default function Log() {
     let selectedFilm = allFilm.find((stock) => stock.name == current);
     setCurrentFilm(selectedFilm);
   }
+  // Populate edit modal before opening
+  function handleOpenEdit(roll) {
+    setCurrentFilm(roll);
+    setFormat(roll.format);
+    editOpen();
+  }
   // Map out table rows
   const rows = rollData.map((roll) => {
     let formattedDateStarted = formatDate(roll.dateStarted);
@@ -91,7 +97,7 @@ export default function Log() {
         {/*TODO: Add button to quickly mark as finished? */}
         <Table.Td>{formattedDateFinished}</Table.Td>
         <Table.Td>
-          <button onClick={editOpen}>Edit</button>
+          <button onClick={() => handleOpenEdit(roll)}>Edit</button>
           <button onClick={() => deleteRoll(roll.id)}>Delete</button>
         </Table.Td>
         <Table.Td></Table.Td>
