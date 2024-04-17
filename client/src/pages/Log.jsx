@@ -22,9 +22,10 @@ export default function Log() {
   //Store all film data
   const [allFilm, setAllFilm] = useState(null);
 
-  // State for film selected in forms
+  // State for film selected in new roll creation
   const [currentFilm, setCurrentFilm] = useState(null);
-
+  // State for roll selected for editing
+  const [currentEdit, setCurrentEdit] = useState(null);
   // States for edit/create modals
   const [editModal, { open: editOpen, close: editClose }] =
     useDisclosure(false);
