@@ -98,6 +98,7 @@ export default function Log() {
       </Table.Tr>
     );
   });
+  // Adds roll to database
   async function createRoll() {
     try {
       const rollData = {
@@ -114,6 +115,7 @@ export default function Log() {
       console.error("Error creating roll:", error);
     }
   }
+  // Deletes roll from database
   async function deleteRoll(id) {
     try {
       await axios.delete(`/api/rolls/deleteroll/${id}`);
