@@ -63,7 +63,7 @@ export default function Log() {
       }
     };
     fetchFilm();
-  }, [newModal, editModal]);
+  }, [newModal]);
 
   // Loading placeholder for when data is being fetched
   // TODO: Update loader
