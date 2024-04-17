@@ -14,4 +14,18 @@ router.get("/:id", async (req, res) => {
   res.json(userRolls);
 });
 
+router.post("/newroll", async (req, res) => {
+  let { filmStock, dateStarted, dateFinished, user, format } = req.body;
+  await prisma.roll.create({
+    data: {
+      filmId: filmStock,
+      dateStarted: dateStarted,
+      format: format,
+      dateFinished: dateFinished,
+      userId: user,
+    },
+  });
+  res.json({ message: "sucessfully added" });
+});
+
 export default router;
