@@ -127,6 +127,7 @@ export default function Log() {
     <AppShellMain>
       <Modal opened={editModal} onClose={editClose}></Modal>
       <Modal opened={newModal} onClose={newClose}>
+        {/*TODO: Add validation */}
         <Autocomplete
           label="Film Stock"
           data={allFilm == null ? "" : allFilm.map((film) => film.name)}
