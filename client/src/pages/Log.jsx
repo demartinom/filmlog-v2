@@ -92,7 +92,7 @@ export default function Log() {
         <Table.Td>{formattedDateFinished}</Table.Td>
         <Table.Td>
           <button onClick={editOpen}>Edit</button>
-          <button>Delete</button>
+          <button onClick={() => deleteRoll(roll.id)}>Delete</button>
         </Table.Td>
         <Table.Td></Table.Td>
       </Table.Tr>
@@ -112,6 +112,14 @@ export default function Log() {
       window.location.reload();
     } catch (error) {
       console.error("Error creating roll:", error);
+    }
+  }
+  async function deleteRoll(id) {
+    try {
+      await axios.delete(`/api/rolls/deleteroll/${id}`);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
     }
   }
 
