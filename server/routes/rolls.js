@@ -25,7 +25,13 @@ router.post("/newroll", async (req, res) => {
       userId: user,
     },
   });
-  res.json({ message: "sucessfully added" });
+  res.json({ message: "sucessfully added roll" });
+});
+
+router.delete("/deleteroll/:rollid", async (req, res) => {
+  let { rollid } = req.params;
+  await prisma.roll.delete({ where: { id: parseInt(rollid) } });
+  res.json({ message: "successfully deleted roll", rollid });
 });
 
 export default router;
