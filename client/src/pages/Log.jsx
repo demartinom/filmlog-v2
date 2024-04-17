@@ -108,6 +108,8 @@ export default function Log() {
         user: data.session.user.id,
       };
       await axios.post("/api/rolls/newroll", rollData);
+      //TODO: See if there is a better way of doing this
+      window.location.reload();
     } catch (error) {
       console.error("Error creating roll:", error);
     }
