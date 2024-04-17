@@ -1,4 +1,10 @@
-import { AppShellMain, Table, Modal, Autocomplete } from "@mantine/core";
+import {
+  AppShellMain,
+  Table,
+  Modal,
+  Autocomplete,
+  Button,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DatePickerInput } from "@mantine/dates";
 import axios from "axios";
@@ -28,6 +34,8 @@ export default function Log() {
   const [startDate, setStartDate] = useState(null);
   // State for Date Finished
   const [endDate, setEndDate] = useState(null);
+  // Set format selected
+  const [format, setFormat] = useState("");
 
   //Fetch rolls associated with user
   useEffect(() => {
@@ -90,6 +98,20 @@ export default function Log() {
       </Table.Tr>
     );
   });
+  async function createRoll() {
+    try {
+      const rollData = {
+        filmStock: currentFilm.id,
+        format: format,
+        dateStarted: startDate,
+        dateFinished: endDate,
+        user: data.session.user.id,
+      };
+      await axios.post("/api/rolls/newroll", rollData);
+    } catch (error) {
+      console.error("Error creating roll:", error);
+    }
+  }
 
   return (
     <AppShellMain>
@@ -103,6 +125,7 @@ export default function Log() {
         <Autocomplete
           label="Format"
           data={currentFilm == null ? "" : currentFilm.formats}
+          onChange={setFormat}
         ></Autocomplete>
         <DatePickerInput
           label="Date Started"
@@ -115,6 +138,7 @@ export default function Log() {
           placeholder="If still in progress leave blank"
           onChange={setEndDate}
         ></DatePickerInput>
+        <Button onClick={createRoll}>Create</Button>
       </Modal>
       <Table highlightOnHover>
         <Table.Thead>
