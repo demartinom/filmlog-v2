@@ -132,10 +132,20 @@ export default function Log() {
       console.error(error);
     }
   }
+  // Edits roll in database
+  async function editRoll(roll) {
+    try {
+      await axios.patch(`/api/rolls/editroll/${roll.id}`, roll);
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <AppShellMain>
       <Modal opened={editModal} onClose={editClose}>
         {/*TODO: Gray out readOnly values */}
+        {/*TODO: Create notes section */}
         <Autocomplete
           defaultValue={currentEdit == null ? "" : currentEdit.film.name}
           readOnly
@@ -161,6 +171,7 @@ export default function Log() {
               ? null
               : new Date(formatDateData(currentEdit.dateFinished))
           }
+          clearable
           onChange={(value) =>
             setCurrentEdit((prevEdit) => ({
               ...prevEdit,
@@ -168,7 +179,7 @@ export default function Log() {
             }))
           }
         ></DatePickerInput>
-        <Button>Done</Button>
+        <Button onClick={() => editRoll(currentEdit)}>Done</Button>
       </Modal>
       <Modal opened={newModal} onClose={newClose}>
         {/*TODO: Add validation */}
