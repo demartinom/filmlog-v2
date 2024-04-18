@@ -12,6 +12,7 @@ import { data } from "../oauth";
 import { useEffect, useState } from "react";
 
 export default function Log() {
+  //TODO: Change to ""?
   // Store roll data linked to user id in data
   const [rollData, setRollData] = useState(null);
 
@@ -79,7 +80,7 @@ export default function Log() {
   }
   // Populate edit modal before opening
   function handleOpenEdit(roll) {
-    setCurrentFilm(roll);
+    setCurrentEdit(roll);
     setFormat(roll.format);
     editOpen();
   }
@@ -131,10 +132,44 @@ export default function Log() {
       console.error(error);
     }
   }
-
   return (
     <AppShellMain>
-      <Modal opened={editModal} onClose={editClose}></Modal>
+      <Modal opened={editModal} onClose={editClose}>
+        {/*TODO: Gray out readOnly values */}
+        <Autocomplete
+          defaultValue={currentEdit == null ? "" : currentEdit.film.name}
+          readOnly
+        ></Autocomplete>
+        <Autocomplete
+          defaultValue={currentEdit == null ? "" : currentEdit.format}
+          readOnly
+        ></Autocomplete>
+        <DatePickerInput
+          value={
+            currentEdit == null ? "" : formatDateData(currentEdit.dateStarted)
+          }
+          onChange={(value) =>
+            setCurrentEdit((prevEdit) => ({
+              ...prevEdit,
+              dateStarted: value,
+            }))
+          }
+        ></DatePickerInput>
+        <DatePickerInput
+          value={
+            currentEdit == null || currentEdit.dateFinished == null
+              ? null
+              : new Date(formatDateData(currentEdit.dateFinished))
+          }
+          onChange={(value) =>
+            setCurrentEdit((prevEdit) => ({
+              ...prevEdit,
+              dateFinished: value,
+            }))
+          }
+        ></DatePickerInput>
+        <Button>Done</Button>
+      </Modal>
       <Modal opened={newModal} onClose={newClose}>
         {/*TODO: Add validation */}
         <Autocomplete
