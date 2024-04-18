@@ -34,4 +34,19 @@ router.delete("/deleteroll/:rollid", async (req, res) => {
   res.json({ message: "successfully deleted roll", rollid });
 });
 
+router.patch("/editroll/:rollId", async (req, res) => {
+  const { rollId } = req.params;
+  const updatedRollData = req.body;
+  const { dateStarted, dateFinished } = updatedRollData;
+  
+  const updatedRoll = await prisma.roll.update({
+    where: { id: parseInt(rollId) },
+    data: {
+      dateStarted: dateStarted,
+      dateFinished: dateFinished,
+    },
+  });
+  res.json(updatedRoll);
+});
+
 export default router;
