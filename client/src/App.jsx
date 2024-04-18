@@ -3,7 +3,7 @@ import { MantineProvider, createTheme, AppShell } from "@mantine/core";
 // Required CSS for mantine
 import "@mantine/core/styles.css";
 // CSS for Mantine dates
-import '@mantine/dates/styles.css';
+import "@mantine/dates/styles.css";
 //Wrappers for React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 // Page components
@@ -12,6 +12,7 @@ import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Redirect from "./pages/Redirect";
 import Log from "./pages/Log";
+import Explore from "./pages/Explore";
 
 // Array of colors for custom theme
 const myColors = [
@@ -41,6 +42,7 @@ function App() {
             <Route index element={<Home />}></Route>
             <Route element={<Redirect />} path="redirect"></Route>
             <Route element={<Log />} path="log"></Route>
+            <Route element={<Explore />} path="explore"></Route>
           </Routes>
           <Footer />
         </AppShell>
