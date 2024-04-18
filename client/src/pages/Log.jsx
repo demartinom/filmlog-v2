@@ -70,7 +70,7 @@ export default function Log() {
   // Loading placeholder for when data is being fetched
   // TODO: Update loader
   if (loading) {
-    return <div>Loading...</div>;
+    return <AppShellMain>Loading...</AppShellMain>;
   }
 
   // Set the currently selected film stock in forms
