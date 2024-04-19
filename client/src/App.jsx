@@ -36,7 +36,7 @@ function App() {
     <BrowserRouter>
       <MantineProvider theme={theme}>
         {/* AppShell to structure website */}
-        <AppShell header={{ height: 50 }} footer={{ height: 40 }}>
+        <AppShell header={{ height: 50 }} footer={{ height: 40 }} pos={'relative'}>
           <Header />
           <Routes>
             <Route index element={<Home />}></Route>
