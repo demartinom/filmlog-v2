@@ -178,6 +178,7 @@ export default function Log() {
               dateFinished: value,
             }))
           }
+          minDate={currentEdit == null ? "" : new Date(currentEdit.dateStarted)}
         ></DatePickerInput>
         <Button onClick={() => editRoll(currentEdit)}>Done</Button>
       </Modal>
