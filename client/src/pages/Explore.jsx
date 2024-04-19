@@ -8,6 +8,7 @@ import {
   Container,
   Modal,
   Text,
+  Stack,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
@@ -15,6 +16,7 @@ import { useEffect, useState } from "react";
 
 /*TODO:
     Click on stock for more info
+    Fallback image
     Compare tool
 */
 
@@ -75,19 +77,29 @@ export default function Explore() {
   // Render returned data
   return (
     <AppShellMain>
-      <Modal opened={infoModal} onClose={close}>
-        <Image src={modalData.img}></Image>
-        <Title>{modalData.name}</Title>
-        <Text>{modalData.maker.name}</Text>
-        <Text>Film Type: {modalData.type}</Text>
-        <Text>ISO: {modalData.ISO}</Text>
-        <Text>
-          Formats:{" "}
-          {modalData.formats.map((format, i) =>
-            i > 0 ? `, ${format}` : `${format}`
-          )}
-        </Text>
-        <Text>Development Process: {modalData.process}</Text>
+      <Modal opened={infoModal} onClose={close} size={"lg"}>
+        <Stack align="center">
+          <Image src={modalData.img} maw={400} mah={400}></Image>
+          <Title>{modalData.name}</Title>
+          <Text>
+            <strong>Maker</strong>: {modalData.maker.name}
+          </Text>
+          <Text>
+            <strong>Film Type</strong>: {modalData.type}
+          </Text>
+          <Text>
+            <strong>ISO</strong>: {modalData.ISO}
+          </Text>
+          <Text>
+            <strong>Formats</strong>:{" "}
+            {modalData.formats.map((format, i) =>
+              i > 0 ? `, ${format}` : `${format}`
+            )}
+          </Text>
+          <Text>
+            <strong>Development Process</strong>: {modalData.process}
+          </Text>
+        </Stack>
       </Modal>
       <Container size={"lg"}>
         <SimpleGrid cols={4}>{filmData}</SimpleGrid>
