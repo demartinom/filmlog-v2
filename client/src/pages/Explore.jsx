@@ -7,6 +7,7 @@ import {
   AspectRatio,
   Container,
   Modal,
+  Text,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
@@ -26,7 +27,7 @@ export default function Explore() {
   const [infoModal, { open, close }] = useDisclosure(false);
   // Data to display in info modal
   const [modalData, setModalData] = useState(null);
-  
+
   // api call to get all film stock data
   useEffect(() => {
     async function getStocks() {
@@ -43,7 +44,7 @@ export default function Explore() {
     getStocks();
   }, []);
 
-// Open modal and populate with selected stock information
+  // Open modal and populate with selected stock information
   function handleModal(stock) {
     setModalData(stock);
     open();
@@ -74,7 +75,20 @@ export default function Explore() {
   // Render returned data
   return (
     <AppShellMain>
-      <Modal opened={infoModal} onClose={close}></Modal>
+      <Modal opened={infoModal} onClose={close}>
+        <Image src={modalData.img}></Image>
+        <Title>{modalData.name}</Title>
+        <Text>{modalData.maker.name}</Text>
+        <Text>Film Type: {modalData.type}</Text>
+        <Text>ISO: {modalData.ISO}</Text>
+        <Text>
+          Formats:{" "}
+          {modalData.formats.map((format, i) =>
+            i > 0 ? `, ${format}` : `${format}`
+          )}
+        </Text>
+        <Text>Development Process: {modalData.process}</Text>
+      </Modal>
       <Container size={"lg"}>
         <SimpleGrid cols={4}>{filmData}</SimpleGrid>
       </Container>
