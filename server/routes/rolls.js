@@ -10,6 +10,7 @@ router.get("/:id", async (req, res) => {
   const userRolls = await prisma.roll.findMany({
     where: { userId: id },
     include: { film: true },
+    orderBy: { id: "asc" },
   });
   res.json(userRolls);
 });
@@ -38,7 +39,7 @@ router.patch("/editroll/:rollId", async (req, res) => {
   const { rollId } = req.params;
   const updatedRollData = req.body;
   const { dateStarted, dateFinished } = updatedRollData;
-  
+
   const updatedRoll = await prisma.roll.update({
     where: { id: parseInt(rollId) },
     data: {
