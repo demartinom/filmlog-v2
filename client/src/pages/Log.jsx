@@ -70,7 +70,7 @@ export default function Log() {
   // Loading placeholder for when data is being fetched
   // TODO: Update loader
   if (loading) {
-    return <div>Loading...</div>;
+    return <AppShellMain>Loading...</AppShellMain>;
   }
 
   // Set the currently selected film stock in forms
@@ -178,6 +178,7 @@ export default function Log() {
               dateFinished: value,
             }))
           }
+          minDate={currentEdit == null ? "" : new Date(currentEdit.dateStarted)}
         ></DatePickerInput>
         <Button onClick={() => editRoll(currentEdit)}>Done</Button>
       </Modal>

@@ -6,7 +6,10 @@ const router = express.Router();
 
 // List of all film stocks
 router.get("/all", async (req, res) => {
-  const allFilms = await prisma.filmStock.findMany();
+  const allFilms = await prisma.filmStock.findMany({
+    include: { maker: true },
+    orderBy: { id: "asc" },
+  });
   res.json(allFilms);
 });
 
