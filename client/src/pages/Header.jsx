@@ -18,9 +18,6 @@ export default function Header() {
         </Text>
         <Group justify="end">
           <Text size="2rem">
-            <Link to="/log">My Log</Link>
-          </Text>
-          <Text size="2rem">
             <Link to="/explore">Explore</Link>
           </Text>
           {data.session != null && (
