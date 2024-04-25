@@ -1,5 +1,7 @@
 import { Group, Stack, Text, Image, Title, Autocomplete } from "@mantine/core";
 import { useState } from "react";
+
+// Table for film stocks being compared
 function stockData(filmStock) {
   return (
     <Stack align="center">
@@ -26,6 +28,7 @@ function stockData(filmStock) {
     </Stack>
   );
 }
+
 export default function Compare({ data }) {
   //State for compared film stocks
   const [stock1, setStock1] = useState(null);
