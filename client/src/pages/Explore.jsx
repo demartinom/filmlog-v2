@@ -9,16 +9,12 @@ import {
   Modal,
   Text,
   Stack,
+  Button,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-/*TODO:
-    Click on stock for more info
-    Fallback image
-    Compare tool
-*/
+import Compare from "../components/Compare";
 
 export default function Explore() {
   // State for information on all film stocks
@@ -26,9 +22,13 @@ export default function Explore() {
   // Loading state while receiving data
   const [loading, setLoading] = useState(true);
   // Modal state for more info on film stock
-  const [infoModal, { open, close }] = useDisclosure(false);
+  const [infoModal, { open: openInfo, close: closeInfo }] =
+    useDisclosure(false);
   // Data to display in info modal
   const [modalData, setModalData] = useState(null);
+  // Open compare modal
+  const [compareModal, { open: openCompare, close: closeCompare }] =
+    useDisclosure(false);
 
   // api call to get all film stock data
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function Explore() {
   // Open modal and populate with selected stock information
   function handleModal(stock) {
     setModalData(stock);
-    open();
+    openInfo();
   }
 
   // Map over all film stocks to display information
@@ -79,7 +79,7 @@ export default function Explore() {
   return (
     <AppShellMain>
       {modalData && (
-        <Modal opened={infoModal} onClose={close} size={"lg"}>
+        <Modal opened={infoModal} onClose={closeInfo} size={"lg"}>
           <Stack align="center">
             <Image src={modalData.img} maw={400} mah={400}></Image>
             <Title>{modalData.name}</Title>
@@ -104,6 +104,10 @@ export default function Explore() {
           </Stack>
         </Modal>
       )}
+      <Modal opened={compareModal} onClose={closeCompare} size={"2xl"}>
+        <Compare data={filmStockData} />
+      </Modal>
+      <Button onClick={openCompare}>Compare Film Stocks</Button>
       <Container size={"lg"}>
         <SimpleGrid cols={4}>{filmData}</SimpleGrid>
       </Container>
