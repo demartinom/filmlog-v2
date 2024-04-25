@@ -13,6 +13,7 @@ import Footer from "./pages/Footer";
 import Redirect from "./pages/Redirect";
 import Log from "./pages/Log";
 import Explore from "./pages/Explore";
+import { data } from "./oauth";
 
 // Array of colors for custom theme
 const myColors = [
@@ -36,12 +37,18 @@ function App() {
     <BrowserRouter>
       <MantineProvider theme={theme}>
         {/* AppShell to structure website */}
-        <AppShell header={{ height: 50 }} footer={{ height: 40 }} pos={'relative'}>
+        <AppShell
+          header={{ height: 50 }}
+          footer={{ height: 40 }}
+          pos={"relative"}
+        >
           <Header />
           <Routes>
-            <Route index element={<Home />}></Route>
+            <Route
+              index
+              element={data.session == null ? <Home /> : <Log />}
+            ></Route>
             <Route element={<Redirect />} path="redirect"></Route>
-            <Route element={<Log />} path="log"></Route>
             <Route element={<Explore />} path="explore"></Route>
           </Routes>
           <Footer />
