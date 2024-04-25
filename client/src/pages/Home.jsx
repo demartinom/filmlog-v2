@@ -1,4 +1,4 @@
-import { signInWithGitHub, signInWithGoogle } from "../oauth";
+import { signInWithGitHub, signInWithGoogle, signInAnonymous } from "../oauth";
 import { Text, AppShellMain, Stack, Group, Button, Image } from "@mantine/core";
 
 export default function Home() {
@@ -30,6 +30,7 @@ export default function Home() {
             >
               Sign in with GitHub
             </Button>
+            <Button onClick={signInAnonymous}>Try Demo</Button>
           </Group>
         </Stack>
         <Image src="./landing.svg" h={600} w={600}></Image>

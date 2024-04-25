@@ -32,6 +32,14 @@ export const signInWithGitHub = async () => {
   }
 };
 
+export const signInAnonymous = async () => {
+  const { error } = await supabase.auth.signInAnonymously();
+  window.location.reload();
+  if (error) {
+    console.error(error);
+  }
+};
+
 // Sign out of current session/account
 export const signOut = async () => {
   const { error } = await supabase.auth.signOut();
