@@ -104,7 +104,7 @@ export default function Explore() {
           </Stack>
         </Modal>
       )}
-      <Modal opened={compareModal} onClose={closeCompare}>
+      <Modal opened={compareModal} onClose={closeCompare} size={"2xl"}>
         <Compare data={filmStockData} />
       </Modal>
       <Button onClick={openCompare}>Compare Film Stocks</Button>
