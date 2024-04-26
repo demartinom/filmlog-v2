@@ -4,14 +4,20 @@ import {
   Modal,
   Autocomplete,
   Button,
+  useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DatePickerInput } from "@mantine/dates";
 import axios from "axios";
 import { data } from "../oauth";
 import { useEffect, useState } from "react";
+import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
 
 export default function Log() {
+  //Mantine Theme Hook and button color
+  const theme = useMantineTheme();
+  const buttonStyles = { color: theme.colors.myColors[6] };
+
   //TODO: Change to ""?
   // Store roll data linked to user id in data
   const [rollData, setRollData] = useState(null);
@@ -98,11 +104,14 @@ export default function Log() {
         <Table.Td>{formattedDateStarted}</Table.Td>
         {/*TODO: Add button to quickly mark as finished? */}
         <Table.Td>{formattedDateFinished}</Table.Td>
-        <Table.Td>
-          <button onClick={() => handleOpenEdit(roll)}>Edit</button>
-          <button onClick={() => deleteRoll(roll.id)}>Delete</button>
-        </Table.Td>
-        <Table.Td></Table.Td>
+        <FaEdit
+          onClick={() => handleOpenEdit(roll)}
+          style={buttonStyles}
+        ></FaEdit>
+        <FaTrashAlt
+          onClick={() => deleteRoll(roll.id)}
+          style={buttonStyles}
+        ></FaTrashAlt>
       </Table.Tr>
     );
   });
@@ -207,8 +216,8 @@ export default function Log() {
         ></DatePickerInput>
         <Button onClick={createRoll}>Create</Button>
       </Modal>
-      <Table highlightOnHover w={"70%"} m={"auto"}>
-        <Table.Thead>
+      <Table highlightOnHover w={"70%"} m={"auto"} withColumnBorders>
+        <Table.Thead fz={"h3"}>
           <Table.Tr>
             <Table.Th>Film Stock</Table.Th>
             <Table.Th>Format</Table.Th>
@@ -216,8 +225,8 @@ export default function Log() {
             <Table.Th>Date Finished</Table.Th>
           </Table.Tr>
         </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-        <Button onClick={newOpen}>New</Button>
+        <Table.Tbody fz={"lg"}>{rows}</Table.Tbody>
+        <FaPlusCircle onClick={newOpen} style={buttonStyles}></FaPlusCircle>
       </Table>
     </AppShellMain>
   );
