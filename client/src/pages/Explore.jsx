@@ -5,7 +5,6 @@ import {
   Image,
   SimpleGrid,
   AspectRatio,
-  Container,
   Modal,
   Text,
   Stack,
@@ -56,18 +55,25 @@ export default function Explore() {
   const filmData = filmStockData.map((stock) => (
     <Card
       key={stock.id}
-      bg={"gray"}
-      w={"60%"}
-      m={"auto"}
+      bg={"myColors.3"}
+      // w={"70%"}
+      // m={"auto"}
       withBorder
       onClick={() => handleModal(stock)}
+      style={{ cursor: "pointer" }}
+      pb={0}
+      radius={10}
     >
       <Card.Section>
         <AspectRatio>
-          <Image src={stock.img}></Image>
+          <Image src={stock.img} bg={"white"}></Image>
         </AspectRatio>
       </Card.Section>
-      <Title size="xs">{stock.name}</Title>
+      <Card.Section my={"auto"}>
+        <Title size={"h4"} ta={"center"} p={10}>
+          {stock.name}
+        </Title>
+      </Card.Section>
     </Card>
   ));
 
@@ -108,9 +114,9 @@ export default function Explore() {
         <Compare data={filmStockData} />
       </Modal>
       <Button onClick={openCompare}>Compare Film Stocks</Button>
-      <Container size={"lg"}>
-        <SimpleGrid cols={4}>{filmData}</SimpleGrid>
-      </Container>
+      <SimpleGrid cols={5} w={"80%"} m={"auto"} mb={20}>
+        {filmData}
+      </SimpleGrid>
     </AppShellMain>
   );
 }
