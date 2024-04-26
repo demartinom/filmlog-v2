@@ -207,7 +207,7 @@ export default function Log() {
         ></DatePickerInput>
         <Button onClick={createRoll}>Create</Button>
       </Modal>
-      <Table highlightOnHover>
+      <Table highlightOnHover w={"70%"} m={"auto"}>
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Film Stock</Table.Th>
@@ -217,8 +217,8 @@ export default function Log() {
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
+        <Button onClick={newOpen}>New</Button>
       </Table>
-      <button onClick={newOpen}>New</button>
     </AppShellMain>
   );
 }
