@@ -61,7 +61,6 @@ export default function Explore() {
       withBorder
       onClick={() => handleModal(stock)}
       style={{ cursor: "pointer" }}
-      pb={0}
       radius={10}
     >
       <Card.Section>
@@ -74,6 +73,9 @@ export default function Explore() {
           {stock.name}
         </Title>
       </Card.Section>
+      <Button w={"50%"} m={"auto"}>
+        Learn More
+      </Button>
     </Card>
   ));
 
@@ -113,6 +115,13 @@ export default function Explore() {
       <Modal opened={compareModal} onClose={closeCompare} size={"2xl"}>
         <Compare data={filmStockData} />
       </Modal>
+      <Stack align="center" mt={20}>
+        <Title size={"h2"}>Explore Film Stocks</Title>
+        <Title size="h3">
+          Here you can find a list of film stocks currently in production. Click
+          on the card to learn more information.
+        </Title>
+      </Stack>
       <Button onClick={openCompare}>Compare Film Stocks</Button>
       <SimpleGrid cols={5} w={"80%"} m={"auto"} mb={20}>
         {filmData}
