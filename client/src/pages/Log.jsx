@@ -21,7 +21,7 @@ import { formatDateData } from "../helper-functions/formatDateData";
 export default function Log() {
   //Mantine Theme Hook and button color
   const theme = useMantineTheme();
-  const buttonStyles = { color: theme.colors.myColors[6] };
+  const buttonStyles = { color: theme.colors.myColors[6], cursor: "pointer" };
 
   //TODO: Change to ""?
   // Store roll data linked to user id in data
@@ -109,7 +109,7 @@ export default function Log() {
         <Table.Td ta={"center"}>{formattedDateStarted}</Table.Td>
         {/*TODO: Add button to quickly mark as finished? */}
         <Table.Td ta={"center"}>{formattedDateFinished}</Table.Td>
-        <Group my={"xs"} mx={"xs"}>
+        <Group m={"lg"}>
           <FaEdit
             onClick={() => handleOpenEdit(roll)}
             style={buttonStyles}
@@ -227,13 +227,14 @@ export default function Log() {
       </Modal>
       <Stack align="center" py={"md"}>
         <Title size={"h1"}>My Film</Title>
-        <Table highlightOnHover w={"75%"} withColumnBorders>
-          <Table.Thead fz={"h3"}>
+        <Table highlightOnHover w={"75%"} verticalSpacing={"md"}>
+          <Table.Thead fz={"h3"} bg={"myColors.6"}>
             <Table.Tr>
               <Table.Th>Film Stock</Table.Th>
               <Table.Th ta={"center"}>Format</Table.Th>
               <Table.Th ta={"center"}>Date Started</Table.Th>
               <Table.Th ta={"center"}>Date Finished</Table.Th>
+              <Table.Th></Table.Th>
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody fz={"xl"}>{rows}</Table.Tbody>
