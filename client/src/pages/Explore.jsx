@@ -85,8 +85,8 @@ export default function Explore() {
   return (
     <AppShellMain>
       {modalData && (
-        <Modal opened={infoModal} onClose={closeInfo} size={"lg"}>
-          <Stack align="center">
+        <Modal opened={infoModal} onClose={closeInfo} size={"lg"} radius={10}>
+          <Stack align="center" p={20}>
             <Image src={modalData.img} maw={400} mah={400}></Image>
             <Title>{modalData.name}</Title>
             <Text>
