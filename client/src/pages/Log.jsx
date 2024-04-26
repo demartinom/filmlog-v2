@@ -12,6 +12,8 @@ import axios from "axios";
 import { data } from "../oauth";
 import { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
+import { formatDate } from "../helper-functions/formatDate";
+import { formatDateData } from "../helper-functions/formatDateData";
 
 export default function Log() {
   //Mantine Theme Hook and button color
@@ -231,20 +233,4 @@ export default function Log() {
     </AppShellMain>
   );
 }
-// Format date found in dateStarted and dateFinished to dd/mm/yy format
-function formatDate(rollDate) {
-  let dateStarted = new Date(rollDate);
-  let formattedDateStarted = `${
-    dateStarted.getMonth() + 1
-  }/${dateStarted.getDate()}/${dateStarted.getFullYear().toString().slice(-2)}`;
-  return formattedDateStarted;
-}
 
-function formatDateData(dateString) {
-  const dateObject = new Date(dateString);
-  const year = dateObject.getUTCFullYear(); // Using UTC methods
-  const month = String(dateObject.getUTCMonth() + 1).padStart(2, "0"); // Months are zero-based
-  const day = String(dateObject.getUTCDate()).padStart(2, "0");
-
-  return new Date(`${year},${month},${day}`);
-}
