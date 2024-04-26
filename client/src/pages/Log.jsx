@@ -5,6 +5,9 @@ import {
   Autocomplete,
   Button,
   useMantineTheme,
+  Group,
+  Title,
+  Stack,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DatePickerInput } from "@mantine/dates";
@@ -102,18 +105,22 @@ export default function Log() {
     return (
       <Table.Tr key={roll.id}>
         <Table.Td>{roll.film.name}</Table.Td>
-        <Table.Td>{roll.format}</Table.Td>
-        <Table.Td>{formattedDateStarted}</Table.Td>
+        <Table.Td ta={"center"}>{roll.format}</Table.Td>
+        <Table.Td ta={"center"}>{formattedDateStarted}</Table.Td>
         {/*TODO: Add button to quickly mark as finished? */}
-        <Table.Td>{formattedDateFinished}</Table.Td>
-        <FaEdit
-          onClick={() => handleOpenEdit(roll)}
-          style={buttonStyles}
-        ></FaEdit>
-        <FaTrashAlt
-          onClick={() => deleteRoll(roll.id)}
-          style={buttonStyles}
-        ></FaTrashAlt>
+        <Table.Td ta={"center"}>{formattedDateFinished}</Table.Td>
+        <Group my={"xs"} mx={"xs"}>
+          <FaEdit
+            onClick={() => handleOpenEdit(roll)}
+            style={buttonStyles}
+            size={23}
+          ></FaEdit>
+          <FaTrashAlt
+            onClick={() => deleteRoll(roll.id)}
+            style={buttonStyles}
+            size={23}
+          ></FaTrashAlt>
+        </Group>
       </Table.Tr>
     );
   });
@@ -218,19 +225,25 @@ export default function Log() {
         ></DatePickerInput>
         <Button onClick={createRoll}>Create</Button>
       </Modal>
-      <Table highlightOnHover w={"70%"} m={"auto"} withColumnBorders>
-        <Table.Thead fz={"h3"}>
-          <Table.Tr>
-            <Table.Th>Film Stock</Table.Th>
-            <Table.Th>Format</Table.Th>
-            <Table.Th>Date Started</Table.Th>
-            <Table.Th>Date Finished</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody fz={"lg"}>{rows}</Table.Tbody>
-        <FaPlusCircle onClick={newOpen} style={buttonStyles}></FaPlusCircle>
-      </Table>
+      <Stack align="center" py={"md"}>
+        <Title size={"h1"}>My Film</Title>
+        <Table highlightOnHover w={"75%"} withColumnBorders>
+          <Table.Thead fz={"h3"}>
+            <Table.Tr>
+              <Table.Th>Film Stock</Table.Th>
+              <Table.Th ta={"center"}>Format</Table.Th>
+              <Table.Th ta={"center"}>Date Started</Table.Th>
+              <Table.Th ta={"center"}>Date Finished</Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody fz={"xl"}>{rows}</Table.Tbody>
+          <FaPlusCircle
+            onClick={newOpen}
+            style={{ ...buttonStyles, marginLeft: "10px" }}
+            size={"30"}
+          ></FaPlusCircle>
+        </Table>
+      </Stack>
     </AppShellMain>
   );
 }
-
