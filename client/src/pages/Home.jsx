@@ -36,7 +36,7 @@ export default function Home() {
               size="xl"
               radius={10}
             >
-              Sign in Anonymously
+              Try the demo version
             </Button>
           </Group>
         </Stack>
