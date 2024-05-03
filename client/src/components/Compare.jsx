@@ -41,23 +41,25 @@ export default function Compare({ data }) {
   }
 
   return (
-    <Group ta={"center"}>
+    <Group ta={"center"} p={20} grow>
       <Stack w={400} h={700}>
         {stock1 && stockData(stock1)}
       </Stack>
-      <Stack>
-        <Text>Select Film Stocks</Text>
+      <Stack align="center">
+        <Title>Select Film Stocks</Title>
         <Autocomplete
           data={data.map((stock) => stock.name)}
           onChange={(value) => {
             handleStock(value, setStock1);
           }}
+          w={"75%"}
         ></Autocomplete>
         <Autocomplete
           data={data.map((stock) => stock.name)}
           onChange={(value) => {
             handleStock(value, setStock2);
           }}
+          w={"75%"}
         ></Autocomplete>
       </Stack>
       <Stack

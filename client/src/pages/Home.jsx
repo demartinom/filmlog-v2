@@ -30,7 +30,14 @@ export default function Home() {
             >
               Sign in with GitHub
             </Button>
-            <Button onClick={signInAnonymous}>Try Demo</Button>
+            <Button
+              onClick={signInAnonymous}
+              bg={"myColors.6"}
+              size="xl"
+              radius={10}
+            >
+              Try the demo version
+            </Button>
           </Group>
         </Stack>
         <Image src="./landing.svg" h={600} w={600}></Image>

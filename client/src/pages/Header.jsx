@@ -21,7 +21,7 @@ export default function Header() {
             <Link to="/explore">Explore</Link>
           </Text>
           {data.session != null && (
-            <Text size="2rem" onClick={logout}>
+            <Text size="2rem" onClick={logout} style={{ cursor: "pointer" }}>
               Log Out
             </Text>
           )}

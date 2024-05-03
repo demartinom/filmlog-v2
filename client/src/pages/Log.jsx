@@ -4,14 +4,26 @@ import {
   Modal,
   Autocomplete,
   Button,
+  useMantineTheme,
+  Group,
+  Title,
+  Stack,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { DatePickerInput } from "@mantine/dates";
 import axios from "axios";
 import { data } from "../oauth";
 import { useEffect, useState } from "react";
+import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
+import { formatDate } from "../helper-functions/formatDate";
+import { formatDateData } from "../helper-functions/formatDateData";
+import Loading from "../components/Loading";
 
 export default function Log() {
+  //Mantine Theme Hook and button color
+  const theme = useMantineTheme();
+  const buttonStyles = { color: theme.colors.myColors[6], cursor: "pointer" };
+
   //TODO: Change to ""?
   // Store roll data linked to user id in data
   const [rollData, setRollData] = useState(null);
@@ -68,9 +80,12 @@ export default function Log() {
   }, [newModal]);
 
   // Loading placeholder for when data is being fetched
-  // TODO: Update loader
   if (loading) {
-    return <AppShellMain>Loading...</AppShellMain>;
+    return (
+      <AppShellMain>
+        <Loading loadingState={loading} />
+      </AppShellMain>
+    );
   }
 
   // Set the currently selected film stock in forms
@@ -94,15 +109,22 @@ export default function Log() {
     return (
       <Table.Tr key={roll.id}>
         <Table.Td>{roll.film.name}</Table.Td>
-        <Table.Td>{roll.format}</Table.Td>
-        <Table.Td>{formattedDateStarted}</Table.Td>
+        <Table.Td ta={"center"}>{roll.format}</Table.Td>
+        <Table.Td ta={"center"}>{formattedDateStarted}</Table.Td>
         {/*TODO: Add button to quickly mark as finished? */}
-        <Table.Td>{formattedDateFinished}</Table.Td>
-        <Table.Td>
-          <button onClick={() => handleOpenEdit(roll)}>Edit</button>
-          <button onClick={() => deleteRoll(roll.id)}>Delete</button>
-        </Table.Td>
-        <Table.Td></Table.Td>
+        <Table.Td ta={"center"}>{formattedDateFinished}</Table.Td>
+        <Group m={"lg"}>
+          <FaEdit
+            onClick={() => handleOpenEdit(roll)}
+            style={buttonStyles}
+            size={23}
+          ></FaEdit>
+          <FaTrashAlt
+            onClick={() => deleteRoll(roll.id)}
+            style={buttonStyles}
+            size={23}
+          ></FaTrashAlt>
+        </Group>
       </Table.Tr>
     );
   });
@@ -207,35 +229,26 @@ export default function Log() {
         ></DatePickerInput>
         <Button onClick={createRoll}>Create</Button>
       </Modal>
-      <Table highlightOnHover>
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th>Film Stock</Table.Th>
-            <Table.Th>Format</Table.Th>
-            <Table.Th>Date Started</Table.Th>
-            <Table.Th>Date Finished</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-      </Table>
-      <button onClick={newOpen}>New</button>
+      <Stack align="center" py={"md"}>
+        <Title size={"h1"}>My Film</Title>
+        <Table highlightOnHover w={"75%"} verticalSpacing={"md"}>
+          <Table.Thead fz={"h3"} bg={"myColors.6"}>
+            <Table.Tr>
+              <Table.Th>Film Stock</Table.Th>
+              <Table.Th ta={"center"}>Format</Table.Th>
+              <Table.Th ta={"center"}>Date Started</Table.Th>
+              <Table.Th ta={"center"}>Date Finished</Table.Th>
+              <Table.Th></Table.Th>
+            </Table.Tr>
+          </Table.Thead>
+          <Table.Tbody fz={"xl"}>{rows}</Table.Tbody>
+          <FaPlusCircle
+            onClick={newOpen}
+            style={{ ...buttonStyles, marginLeft: "10px" }}
+            size={"30"}
+          ></FaPlusCircle>
+        </Table>
+      </Stack>
     </AppShellMain>
   );
-}
-// Format date found in dateStarted and dateFinished to dd/mm/yy format
-function formatDate(rollDate) {
-  let dateStarted = new Date(rollDate);
-  let formattedDateStarted = `${
-    dateStarted.getMonth() + 1
-  }/${dateStarted.getDate()}/${dateStarted.getFullYear().toString().slice(-2)}`;
-  return formattedDateStarted;
-}
-
-function formatDateData(dateString) {
-  const dateObject = new Date(dateString);
-  const year = dateObject.getUTCFullYear(); // Using UTC methods
-  const month = String(dateObject.getUTCMonth() + 1).padStart(2, "0"); // Months are zero-based
-  const day = String(dateObject.getUTCDate()).padStart(2, "0");
-
-  return new Date(`${year},${month},${day}`);
 }

@@ -5,16 +5,17 @@ import {
   Image,
   SimpleGrid,
   AspectRatio,
-  Container,
   Modal,
   Text,
   Stack,
   Button,
+  Center,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Compare from "../components/Compare";
+import Loading from "../components/Loading";
 
 export default function Explore() {
   // State for information on all film stocks
@@ -56,31 +57,44 @@ export default function Explore() {
   const filmData = filmStockData.map((stock) => (
     <Card
       key={stock.id}
-      bg={"gray"}
-      w={"60%"}
-      m={"auto"}
+      bg={"myColors.3"}
+      // w={"70%"}
+      // m={"auto"}
       withBorder
       onClick={() => handleModal(stock)}
+      style={{ cursor: "pointer" }}
+      radius={10}
     >
       <Card.Section>
         <AspectRatio>
-          <Image src={stock.img}></Image>
+          <Image src={stock.img} bg={"white"}></Image>
         </AspectRatio>
       </Card.Section>
-      <Title size="xs">{stock.name}</Title>
+      <Card.Section my={"auto"}>
+        <Title size={"h4"} ta={"center"} p={10}>
+          {stock.name}
+        </Title>
+      </Card.Section>
+      <Button w={"50%"} m={"auto"}>
+        Learn More
+      </Button>
     </Card>
   ));
 
   // Renders loading when fetching data
   if (loading) {
-    return <AppShellMain>Loading...</AppShellMain>;
+    return (
+      <AppShellMain>
+        <Loading loadingState={loading} />
+      </AppShellMain>
+    );
   }
   // Render returned data
   return (
     <AppShellMain>
       {modalData && (
-        <Modal opened={infoModal} onClose={closeInfo} size={"lg"}>
-          <Stack align="center">
+        <Modal opened={infoModal} onClose={closeInfo} size={"lg"} radius={10}>
+          <Stack align="center" p={20}>
             <Image src={modalData.img} maw={400} mah={400}></Image>
             <Title>{modalData.name}</Title>
             <Text>
@@ -104,13 +118,24 @@ export default function Explore() {
           </Stack>
         </Modal>
       )}
-      <Modal opened={compareModal} onClose={closeCompare} size={"2xl"}>
+      <Modal opened={compareModal} onClose={closeCompare} size={5000}>
         <Compare data={filmStockData} />
       </Modal>
-      <Button onClick={openCompare}>Compare Film Stocks</Button>
-      <Container size={"lg"}>
-        <SimpleGrid cols={4}>{filmData}</SimpleGrid>
-      </Container>
+      <Stack align="center" mt={20}>
+        <Title size={"h2"}>Explore Film Stocks</Title>
+        <Title size="h3">
+          Here you can find a list of film stocks currently in production. Click
+          on the card to learn more information.
+        </Title>
+      </Stack>
+      <Center py={20}>
+        <Button onClick={openCompare} size="xl">
+          Compare Film Stocks
+        </Button>
+      </Center>
+      <SimpleGrid cols={5} w={"80%"} m={"auto"} mb={20}>
+        {filmData}
+      </SimpleGrid>
     </AppShellMain>
   );
 }

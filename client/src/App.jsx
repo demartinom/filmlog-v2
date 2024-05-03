@@ -30,7 +30,10 @@ const myColors = [
 ];
 
 // Create theme using myColors array
-const theme = createTheme({ colors: { myColors } });
+const theme = createTheme({
+  colors: { myColors },
+  fontFamily: "nunito, sans-serif",
+});
 
 function App() {
   return (
