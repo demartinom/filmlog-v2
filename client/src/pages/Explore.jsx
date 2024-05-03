@@ -9,6 +9,7 @@ import {
   Text,
   Stack,
   Button,
+  Center,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
@@ -122,7 +123,11 @@ export default function Explore() {
           on the card to learn more information.
         </Title>
       </Stack>
-      <Button onClick={openCompare}>Compare Film Stocks</Button>
+      <Center py={20}>
+        <Button onClick={openCompare} size="xl">
+          Compare Film Stocks
+        </Button>
+      </Center>
       <SimpleGrid cols={5} w={"80%"} m={"auto"} mb={20}>
         {filmData}
       </SimpleGrid>
