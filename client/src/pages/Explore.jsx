@@ -15,6 +15,7 @@ import { useDisclosure } from "@mantine/hooks";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Compare from "../components/Compare";
+import Loading from "../components/Loading";
 
 export default function Explore() {
   // State for information on all film stocks
@@ -82,7 +83,11 @@ export default function Explore() {
 
   // Renders loading when fetching data
   if (loading) {
-    return <AppShellMain>Loading...</AppShellMain>;
+    return (
+      <AppShellMain>
+        <Loading loadingState={loading} />
+      </AppShellMain>
+    );
   }
   // Render returned data
   return (

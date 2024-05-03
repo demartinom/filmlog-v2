@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
 import { formatDate } from "../helper-functions/formatDate";
 import { formatDateData } from "../helper-functions/formatDateData";
+import Loading from "../components/Loading";
 
 export default function Log() {
   //Mantine Theme Hook and button color
@@ -79,9 +80,12 @@ export default function Log() {
   }, [newModal]);
 
   // Loading placeholder for when data is being fetched
-  // TODO: Update loader
   if (loading) {
-    return <AppShellMain>Loading...</AppShellMain>;
+    return (
+      <AppShellMain>
+        <Loading loadingState={loading} />
+      </AppShellMain>
+    );
   }
 
   // Set the currently selected film stock in forms
