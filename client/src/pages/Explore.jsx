@@ -112,7 +112,7 @@ export default function Explore() {
           </Stack>
         </Modal>
       )}
-      <Modal opened={compareModal} onClose={closeCompare} size={"2xl"}>
+      <Modal opened={compareModal} onClose={closeCompare} size={5000}>
         <Compare data={filmStockData} />
       </Modal>
       <Stack align="center" mt={20}>
