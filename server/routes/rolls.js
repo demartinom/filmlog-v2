@@ -1,53 +1,76 @@
-import express from "express";
-import { PrismaClient } from "@prisma/client";
+const express = require("express");
+const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 const router = express.Router();
 
 // Get all rolls attached to user with id in req
 router.get("/:id", async (req, res) => {
-  let { id } = req.params;
-  const userRolls = await prisma.roll.findMany({
-    where: { userId: id },
-    include: { film: true },
-    orderBy: { id: "asc" },
-  });
-  res.json(userRolls);
+  try {
+    let { id } = req.params;
+    const userRolls = await prisma.roll.findMany({
+      where: { userId: id },
+      include: { film: true },
+      orderBy: { id: "asc" },
+    });
+    res.json(userRolls);
+  } catch (error) {
+    console.error("Error fetching rolls by user ID:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
+// Create a new roll
 router.post("/newroll", async (req, res) => {
-  let { filmStock, dateStarted, dateFinished, user, format } = req.body;
-  await prisma.roll.create({
-    data: {
-      filmId: filmStock,
-      dateStarted: dateStarted,
-      format: format,
-      dateFinished: dateFinished,
-      userId: user,
-    },
-  });
-  res.json({ message: "sucessfully added roll" });
+  try {
+    let { filmStock, dateStarted, dateFinished, user, format } = req.body;
+    await prisma.roll.create({
+      data: {
+        filmId: filmStock,
+        dateStarted: dateStarted,
+        format: format,
+        dateFinished: dateFinished,
+        userId: user,
+      },
+    });
+    res.json({ message: "Successfully added roll" });
+  } catch (error) {
+    console.error("Error creating new roll:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
+// Delete a roll by roll ID
 router.delete("/deleteroll/:rollid", async (req, res) => {
-  let { rollid } = req.params;
-  await prisma.roll.delete({ where: { id: parseInt(rollid) } });
-  res.json({ message: "successfully deleted roll", rollid });
+  try {
+    let { rollid } = req.params;
+    await prisma.roll.delete({ where: { id: parseInt(rollid) } });
+    res.json({ message: "Successfully deleted roll", rollid });
+  } catch (error) {
+    console.error("Error deleting roll:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
+// Update a roll by roll ID
 router.patch("/editroll/:rollId", async (req, res) => {
-  const { rollId } = req.params;
-  const updatedRollData = req.body;
-  const { dateStarted, dateFinished } = updatedRollData;
+  try {
+    const { rollId } = req.params;
+    const updatedRollData = req.body;
+    const { dateStarted, dateFinished } = updatedRollData;
 
-  const updatedRoll = await prisma.roll.update({
-    where: { id: parseInt(rollId) },
-    data: {
-      dateStarted: dateStarted,
-      dateFinished: dateFinished,
-    },
-  });
-  res.json(updatedRoll);
+    const updatedRoll = await prisma.roll.update({
+      where: { id: parseInt(rollId) },
+      data: {
+        dateStarted: dateStarted,
+        dateFinished: dateFinished,
+      },
+    });
+    res.json(updatedRoll);
+  } catch (error) {
+    console.error("Error updating roll:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
-export default router;
+module.exports = router;
