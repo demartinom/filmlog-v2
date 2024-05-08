@@ -2,6 +2,7 @@ import express, { json } from "express";
 import process from "process";
 
 const app = express();
+
 //Allows express to return JSON to frontend
 app.use(json());
 
