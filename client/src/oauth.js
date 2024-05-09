@@ -49,4 +49,9 @@ export const signOut = async () => {
 };
 
 // Get session information
-export const { data } = await supabase.auth.getSession();
+async function fetchData() {
+  const { data } = await supabase.auth.getSession();
+  return data
+}
+
+export const data =fetchData();
