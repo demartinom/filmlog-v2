@@ -1,8 +1,7 @@
-const functions = require("firebase-functions");
-const express = require("express");
-const bodyParser = require("body-parser");
+import express from "express";
+import { json } from "body-parser";
 
-const cors = require("cors");
+import cors from "cors";
 const app = express();
 
 const allowedOrigins = [
@@ -15,16 +14,16 @@ const allowedOrigins = [
 const corsOptions = { origin: allowedOrigins };
 
 // Allows express to parse JSON request bodies
-app.use(bodyParser.json());
+app.use(json());
 // Allows for cors headers
 app.use(cors(corsOptions));
 
 // Router imports
-const filmsRouter = require("./routes/films");
-const makersRouter = require("./routes/makers");
-const typesRouter = require("./routes/types");
-const formatsRouter = require("./routes/formats");
-const rollsRouter = require("./routes/rolls");
+import filmsRouter from "./routes/films";
+import makersRouter from "./routes/makers";
+import typesRouter from "./routes/types";
+import formatsRouter from "./routes/formats";
+import rollsRouter from "./routes/rolls";
 
 // Routers
 app.use("/api/films", filmsRouter);
@@ -35,5 +34,5 @@ app.use("/api/rolls", rollsRouter);
 
 // Export the Express app as a Cloud Function
 app.listen(3000, () => {
-  console.log(`App listening on port 3000`)
-})
+  console.log(`App listening on port 3000`);
+});
