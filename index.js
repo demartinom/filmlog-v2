@@ -20,11 +20,11 @@ app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 // Router imports
-const filmsRouter = require("../routes/films");
-const makersRouter = require("../routes/makers");
-const typesRouter = require("../routes/types");
-const formatsRouter = require("../routes/formats");
-const rollsRouter = require("../routes/rolls");
+const filmsRouter = require("./server/routes/films");
+const makersRouter = require("./server/routes/makers");
+const typesRouter = require("./server/routes/types");
+const formatsRouter = require("./server/routes/formats");
+const rollsRouter = require("./server/routes/rolls");
 
 // Routers
 app.use("/api/films", filmsRouter);
