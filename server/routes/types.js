@@ -1,8 +1,8 @@
-const express = require("express");
-const { PrismaClient } = require("@prisma/client");
+import { Router } from "express";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-const router = express.Router();
+const router = Router();
 
 // Get all film stocks of a certain type (ex. Black and White negative)
 router.get("/:type", async (req, res) => {
@@ -19,4 +19,4 @@ router.get("/:type", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

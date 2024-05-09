@@ -1,8 +1,8 @@
-const express = require("express");
-const { PrismaClient } = require("@prisma/client");
+import { Router } from "express";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-const router = express.Router();
+const router = Router();
 
 // Get all rolls attached to user with id in req
 router.get("/:id", async (req, res) => {
@@ -73,4 +73,4 @@ router.patch("/editroll/:rollId", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
