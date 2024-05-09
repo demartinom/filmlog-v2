@@ -33,6 +33,6 @@ app.use("/api/formats", formatsRouter);
 app.use("/api/rolls", rollsRouter);
 
 // Export the Express app as a Cloud Function
-app.listen(3000, () => {
-  console.log(`App listening on port 3000`);
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });
