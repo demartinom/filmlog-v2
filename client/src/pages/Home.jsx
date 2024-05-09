@@ -1,3 +1,4 @@
+import React from "react";
 import { signInWithGitHub, signInWithGoogle, signInAnonymous } from "../oauth";
 import { Text, AppShellMain, Stack, Group, Button, Image } from "@mantine/core";
 

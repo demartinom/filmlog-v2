@@ -1,3 +1,4 @@
+import React from "react";
 // Wrapper for Mantine Library
 import { MantineProvider, createTheme, AppShell } from "@mantine/core";
 // Required CSS for mantine
@@ -14,7 +15,6 @@ import Redirect from "./pages/Redirect";
 import Log from "./pages/Log";
 import Explore from "./pages/Explore";
 import { data } from "./oauth";
-
 // Array of colors for custom theme
 const myColors = [
   "#e5f9ff",

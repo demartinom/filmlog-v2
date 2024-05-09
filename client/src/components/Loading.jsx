@@ -1,3 +1,4 @@
+import React from "react";
 import { Center, Loader } from "@mantine/core";
 
 export default function Loading() {

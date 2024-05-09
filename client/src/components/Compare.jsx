@@ -1,3 +1,4 @@
+import React from "react";
 import { Group, Stack, Text, Image, Title, Autocomplete } from "@mantine/core";
 import { useState } from "react";
 
