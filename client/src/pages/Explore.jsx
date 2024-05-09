@@ -36,7 +36,7 @@ export default function Explore() {
   useEffect(() => {
     async function getStocks() {
       try {
-        const res = await axios.get("/api/films/all");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/films/all`);
         setFilmStockData(res.data);
       } catch (error) {
         console.error(error);

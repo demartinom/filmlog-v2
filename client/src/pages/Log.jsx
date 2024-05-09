@@ -56,7 +56,9 @@ export default function Log() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/rolls/${data.session.user.id}`);
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_KEY}/api/rolls/${data.session.user.id}`
+        );
         setRollData(res.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -71,7 +73,9 @@ export default function Log() {
   useEffect(() => {
     const fetchFilm = async () => {
       try {
-        const res = await axios.get("/api/films/all");
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_KEY}/api/films/all`
+        );
         setAllFilm(res.data);
       } catch (error) {
         console.log(error);
@@ -139,7 +143,10 @@ export default function Log() {
         dateFinished: endDate,
         user: data.session.user.id,
       };
-      await axios.post("/api/rolls/newroll", rollData);
+      await axios.post(
+        `${import.meta.env.VITE_API_KEY}/api/rolls/newroll`,
+        rollData
+      );
       //TODO: See if there is a better way of doing this
       window.location.reload();
     } catch (error) {
@@ -149,7 +156,9 @@ export default function Log() {
   // Deletes roll from database
   async function deleteRoll(id) {
     try {
-      await axios.delete(`/api/rolls/deleteroll/${id}`);
+      await axios.delete(
+        `${import.meta.env.VITE_API_KEY}/api/rolls/deleteroll/${id}`
+      );
       window.location.reload();
     } catch (error) {
       console.error(error);
@@ -158,7 +167,7 @@ export default function Log() {
   // Edits roll in database
   async function editRoll(roll) {
     try {
-      await axios.patch(`/api/rolls/editroll/${roll.id}`, roll);
+      await axios.patch(`${import.meta.env.VITE_API_KEY}/api/rolls/editroll/${roll.id}`, roll);
       window.location.reload();
     } catch (error) {
       console.error(error);
