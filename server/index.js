@@ -34,4 +34,6 @@ app.use("/api/formats", formatsRouter);
 app.use("/api/rolls", rollsRouter);
 
 // Export the Express app as a Cloud Function
-exports.api = functions.https.onRequest(app);
+app.listen(3000, () => {
+  console.log(`App listening on port 3000`)
+})
