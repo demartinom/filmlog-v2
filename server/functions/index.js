@@ -5,14 +5,14 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
-const corsOptions = {
-  origin: [
-    "https://filmlog.vercel.app",
-    "https://filmlog-v2-demartinoms-projects.vercel.app/",
-    "https://filmlog-v2-git-main-demartinoms-projects.vercel.app/",
-    "https://filmlog-v2-euxcz82yf-demartinoms-projects.vercel.app/",
-  ],
-};
+const allowedOrigins = [
+  "https://filmlog.vercel.app",
+  "https://filmlog-v2-demartinoms-projects.vercel.app/",
+  "https://filmlog-v2-git-main-demartinoms-projects.vercel.app/",
+  "https://filmlog-v2-euxcz82yf-demartinoms-projects.vercel.app/",
+];
+
+const corsOptions = { origin: allowedOrigins };
 
 // Allows express to parse JSON request bodies
 app.use(bodyParser.json());
