@@ -32,6 +32,8 @@ app.use("/api/types", typesRouter);
 app.use("/api/formats", formatsRouter);
 app.use("/api/rolls", rollsRouter);
 
+const PORT = process.env.PORT || 3000;
+
 // Export the Express app as a Cloud Function
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
