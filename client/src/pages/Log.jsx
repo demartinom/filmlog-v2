@@ -57,7 +57,7 @@ export default function Log() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_KEY}/api/rolls/${data.session.user.id}`
+          `https://filmlog-v2.onrender.com/api/api/rolls/${data.session.user.id}`
         );
         setRollData(res.data);
       } catch (error) {
@@ -74,7 +74,7 @@ export default function Log() {
     const fetchFilm = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_KEY}/api/films/all`
+          `https://filmlog-v2.onrender.com/api/api/films/all`
         );
         setAllFilm(res.data);
       } catch (error) {
@@ -144,7 +144,7 @@ export default function Log() {
         user: data.session.user.id,
       };
       await axios.post(
-        `${import.meta.env.VITE_API_KEY}/api/rolls/newroll`,
+        `https://filmlog-v2.onrender.com/api/api/rolls/newroll`,
         rollData
       );
       //TODO: See if there is a better way of doing this
@@ -157,7 +157,7 @@ export default function Log() {
   async function deleteRoll(id) {
     try {
       await axios.delete(
-        `${import.meta.env.VITE_API_KEY}/api/rolls/deleteroll/${id}`
+        `https://filmlog-v2.onrender.com/api/api/rolls/deleteroll/${id}`
       );
       window.location.reload();
     } catch (error) {
@@ -167,7 +167,10 @@ export default function Log() {
   // Edits roll in database
   async function editRoll(roll) {
     try {
-      await axios.patch(`${import.meta.env.VITE_API_KEY}/api/rolls/editroll/${roll.id}`, roll);
+      await axios.patch(
+        `https://filmlog-v2.onrender.com/api/api/rolls/editroll/${roll.id}`,
+        roll
+      );
       window.location.reload();
     } catch (error) {
       console.error(error);

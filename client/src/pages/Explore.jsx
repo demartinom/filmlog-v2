@@ -36,7 +36,7 @@ export default function Explore() {
   useEffect(() => {
     async function getStocks() {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/films/all`);
+        const res = await axios.get(`https://filmlog-v2.onrender.com/api/films/all`);
         setFilmStockData(res.data);
       } catch (error) {
         console.error(error);
