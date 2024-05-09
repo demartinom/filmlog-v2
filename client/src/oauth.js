@@ -12,7 +12,7 @@ export const signInWithGoogle = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "http://localhost:5173/redirect",
+      redirectTo: "https://filmlog-v2.vercel.app/redirect",
     },
   });
   if (error) {
@@ -24,7 +24,7 @@ export const signInWithGitHub = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
-      redirectTo: "http://localhost:5173/redirect",
+      redirectTo: "https://filmlog-v2.vercel.app/redirect",
     },
   });
   if (error) {
