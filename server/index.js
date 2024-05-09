@@ -1,5 +1,5 @@
 import express from "express";
-import { json } from "body-parser";
+import { json } from "express";
 
 import cors from "cors";
 const app = express();
