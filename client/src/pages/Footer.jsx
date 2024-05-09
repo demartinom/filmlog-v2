@@ -1,3 +1,4 @@
+import React from "react";
 import { AppShellFooter, Text, Anchor, Group } from "@mantine/core";
 
 export default function Footer() {
