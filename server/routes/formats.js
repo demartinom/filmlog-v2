@@ -8,7 +8,6 @@ const router = Router();
 router.get("/:format", async (req, res) => {
   try {
     let { format } = req.params;
-    console.log(format);
     format = format.replace(/-/g, " ");
     const formats = await prisma.filmStock.findMany({
       where: { formats: { has: format } },

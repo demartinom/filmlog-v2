@@ -47,7 +47,6 @@ function App() {
     };
     getData();
   }, []);
-console.log(userData)
   return (
     <BrowserRouter>
       <MantineProvider theme={theme}>
