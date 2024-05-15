@@ -43,7 +43,7 @@ function App() {
     const data = fetchData();
     setUserData(data);
   }, []);
-
+console.log(userData)
   return (
     <BrowserRouter>
       <MantineProvider theme={theme}>
