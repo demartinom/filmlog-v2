@@ -19,11 +19,11 @@ app.use(json());
 app.use(cors(corsOptions));
 
 // Router imports
-import filmsRouter from "./routes/films.js";
-import makersRouter from "./routes/makers.js";
-import typesRouter from "./routes/types.js";
-import formatsRouter from "./routes/formats.js";
-import rollsRouter from "./routes/rolls.js";
+import filmsRouter from "../routes/films.js";
+import makersRouter from "../routes/makers.js";
+import typesRouter from "../routes/types.js";
+import formatsRouter from "../routes/formats.js";
+import rollsRouter from "../routes/rolls.js";
 
 // Routers
 app.use("/api/films", filmsRouter);
