@@ -38,14 +38,14 @@ const theme = createTheme({
 function App() {
   // User data
   const [userData, setUserData] = useState({ session: null });
-  
+
   // Fetch user data on page load
   useEffect(() => {
-    const fetchData = async () => {
+    const getData = async () => {
       const newData = await fetchData();
       setUserData(newData);
     };
-    fetchData();
+    getData();
   }, []);
 
   return (
