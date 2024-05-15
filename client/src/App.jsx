@@ -57,7 +57,9 @@ function App() {
           <Routes>
             <Route
               index
-              element={userData.session == null ? <Home /> : <Log />}
+              element={
+                userData.session == null ? <Home /> : <Log data={userData} />
+              }
             ></Route>
             <Route element={<Redirect />} path="redirect"></Route>
             <Route element={<Explore />} path="explore"></Route>

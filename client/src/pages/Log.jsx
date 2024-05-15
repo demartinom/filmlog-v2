@@ -13,14 +13,13 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { DatePickerInput } from "@mantine/dates";
 import axios from "axios";
-import { data } from "../oauth";
 import { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
 import { formatDate } from "../helper-functions/formatDate";
 import { formatDateData } from "../helper-functions/formatDateData";
 import Loading from "../components/Loading";
 
-export default function Log() {
+export default function Log({ data }) {
   //Mantine Theme Hook and button color
   const theme = useMantineTheme();
   const buttonStyles = { color: theme.colors.myColors[6], cursor: "pointer" };
