@@ -53,7 +53,7 @@ function App() {
           footer={{ height: 40 }}
           pos={"relative"}
         >
-          <Header />
+          <Header data={userData} />
           <Routes>
             <Route
               index

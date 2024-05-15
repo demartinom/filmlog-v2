@@ -1,9 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Text, AppShellHeader, Group } from "@mantine/core";
-import { signOut, data } from "../oauth";
+import { signOut } from "../oauth";
 
-export default function Header() {
+export default function Header({ data }) {
   let nav = useNavigate();
 
   // Signs user out using SupaBase and then redirects them to the home page
