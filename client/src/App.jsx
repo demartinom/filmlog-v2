@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // Wrapper for Mantine Library
 import { MantineProvider, createTheme, AppShell } from "@mantine/core";
 // Required CSS for mantine
@@ -14,7 +14,7 @@ import Footer from "./pages/Footer";
 import Redirect from "./pages/Redirect";
 import Log from "./pages/Log";
 import Explore from "./pages/Explore";
-import { data } from "./oauth";
+import { fetchData } from "./oauth";
 // Array of colors for custom theme
 const myColors = [
   "#e5f9ff",
@@ -36,6 +36,14 @@ const theme = createTheme({
 });
 
 function App() {
+  // User data
+  const [userData, setUserData] = useState(null);
+  // Fetch user data on page load
+  useEffect(() => {
+    const data = fetchData();
+    setUserData(data);
+  }, []);
+
   return (
     <BrowserRouter>
       <MantineProvider theme={theme}>
@@ -49,7 +57,7 @@ function App() {
           <Routes>
             <Route
               index
-              element={data.session == null ? <Home /> : <Log />}
+              element={userData.session == null ? <Home /> : <Log />}
             ></Route>
             <Route element={<Redirect />} path="redirect"></Route>
             <Route element={<Explore />} path="explore"></Route>
