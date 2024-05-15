@@ -38,12 +38,16 @@ const theme = createTheme({
 function App() {
   // User data
   const [userData, setUserData] = useState({ session: null });
+  
   // Fetch user data on page load
   useEffect(() => {
-    const data = fetchData();
-    setUserData(data);
+    const fetchData = async () => {
+      const newData = await fetchData();
+      setUserData(newData);
+    };
+    fetchData();
   }, []);
-console.log(userData)
+
   return (
     <BrowserRouter>
       <MantineProvider theme={theme}>
