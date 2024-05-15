@@ -12,7 +12,7 @@ export const signInWithGoogle = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "https://filmlog.vercel.app/redirect",
+      redirectTo: "/redirect",
     },
   });
   if (error) {
@@ -24,7 +24,7 @@ export const signInWithGitHub = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
-      redirectTo: "https://filmlog.vercel.app/redirect",
+      redirectTo: "/redirect",
     },
   });
   if (error) {
@@ -49,9 +49,7 @@ export const signOut = async () => {
 };
 
 // Get session information
-async function fetchData() {
+export const fetchData = async () => {
   const { data } = await supabase.auth.getSession();
-  return data
-}
-
-export const data =fetchData();
+  return data;
+};
