@@ -37,7 +37,7 @@ const theme = createTheme({
 
 function App() {
   // User data
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState({ session: null });
   // Fetch user data on page load
   useEffect(() => {
     const data = fetchData();
