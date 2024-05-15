@@ -2,7 +2,7 @@ import express from "express";
 import { json } from "express";
 
 import cors from "cors";
-const app = express();
+const app = express(); 
 
 const allowedOrigins = [
   "https://filmlog.vercel.app",
