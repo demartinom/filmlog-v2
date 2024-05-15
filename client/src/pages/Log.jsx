@@ -56,7 +56,7 @@ export default function Log({ data }) {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `https://filmlog-v2.onrender.com/api/api/rolls/${data.session.user.id}`
+          `https://filmlog-v2.onrender.com/api/rolls/${data.session.user.id}`
         );
         setRollData(res.data);
       } catch (error) {
@@ -73,7 +73,7 @@ export default function Log({ data }) {
     const fetchFilm = async () => {
       try {
         const res = await axios.get(
-          `https://filmlog-v2.onrender.com/api/api/films/all`
+          `https://filmlog-v2.onrender.com/api/films/all`
         );
         setAllFilm(res.data);
       } catch (error) {
@@ -143,7 +143,7 @@ export default function Log({ data }) {
         user: data.session.user.id,
       };
       await axios.post(
-        `https://filmlog-v2.onrender.com/api/api/rolls/newroll`,
+        `https://filmlog-v2.onrender.com/api/rolls/newroll`,
         rollData
       );
       //TODO: See if there is a better way of doing this
@@ -156,7 +156,7 @@ export default function Log({ data }) {
   async function deleteRoll(id) {
     try {
       await axios.delete(
-        `https://filmlog-v2.onrender.com/api/api/rolls/deleteroll/${id}`
+        `https://filmlog-v2.onrender.com/api/rolls/deleteroll/${id}`
       );
       window.location.reload();
     } catch (error) {
@@ -167,7 +167,7 @@ export default function Log({ data }) {
   async function editRoll(roll) {
     try {
       await axios.patch(
-        `https://filmlog-v2.onrender.com/api/api/rolls/editroll/${roll.id}`,
+        `https://filmlog-v2.onrender.com/api/rolls/editroll/${roll.id}`,
         roll
       );
       window.location.reload();
