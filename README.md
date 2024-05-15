@@ -40,7 +40,7 @@ With the necessary packages installed, run `npm run dev` to start the applicatio
 
 ## How to use FilmLog
 
-**NOTE**: When logging in using OAuth, the website requesting access will be listed as "https://naexczynafocityunkwu.supabase.co". SupaBase's free tier does not allow domain renaming.
+**NOTE**: When logging in using OAuth, the website requesting access will be listed as https://naexczynafocityunkwu.supabase.co. SupaBase's free tier does not allow domain renaming.
  
 1. Log in using Google, GitHub, or anonymously using the demo button
 2. Add your first roll to your log. You can edit or delete rolls after creating them.
