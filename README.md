@@ -49,5 +49,5 @@ With the necessary packages installed, run `npm run dev` to start the applicatio
 ## Ideas for future features
 - Price tracker for film stocks.
 - Search and favorite functionality on the explore page.
-- Statistics page for both users and all users of the site.
+- Statistics page for both individual users and all users of the site.
 - UI improvements (visual design is not my strong suit).
