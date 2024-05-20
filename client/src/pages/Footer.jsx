@@ -18,6 +18,13 @@ export default function Footer() {
         >
           Made by Matt DeMartino
         </Anchor>
+        <Anchor
+          underline="never"
+          c={"black"}
+          href="https://github.com/demartinom/filmlog-v2/"
+        >
+          GitHub Repository
+        </Anchor>
         <Anchor underline="never" c={"black"} href="https://storyset.com/love">
           Home Page Illustration by Storyset
         </Anchor>
