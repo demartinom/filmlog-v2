@@ -212,11 +212,8 @@ export default function Log({ data }) {
               dateFinished: value,
             }))
           }
-          minDate={
-            currentEdit == null
-              ? new Date(1920, 1, 1)
-              : new Date(currentEdit.dateStarted)
-          }
+          placeholder="If still in progress leave blank"
+          minDate={currentEdit == null ? "" : new Date(currentEdit.dateStarted)}
         ></DatePickerInput>
         <Button onClick={() => editRoll(currentEdit)}>Done</Button>
       </Modal>
@@ -242,6 +239,8 @@ export default function Log({ data }) {
           value={endDate}
           placeholder="If still in progress leave blank"
           onChange={setEndDate}
+          data={allFilm == null ? "" : allFilm.map((film) => film.name)}
+          minDate={startDate == null ? "" : new Date(startDate)}
         ></DatePickerInput>
         <Button onClick={createRoll}>Create</Button>
       </Modal>
