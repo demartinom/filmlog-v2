@@ -9,6 +9,7 @@ const allowedOrigins = [
   "https://filmlog-v2-demartinoms-projects.vercel.app/",
   "https://filmlog-v2-git-main-demartinoms-projects.vercel.app/",
   "https://filmlog-v2-euxcz82yf-demartinoms-projects.vercel.app/",
+  "http://localhost:5173/",
 ];
 
 const corsOptions = { origin: allowedOrigins };
