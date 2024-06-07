@@ -76,7 +76,7 @@ export default function Explore() {
           {stock.name}
         </Title>
       </Card.Section>
-      <Button  m={"auto"}>
+      <Button  m={"auto"} visibleFrom="lg">
         Learn More
       </Button>
     </Card>
