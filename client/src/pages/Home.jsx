@@ -41,7 +41,7 @@ export default function Home() {
             </Button>
           </Group>
         </Stack>
-        <Image src="./landing.svg" h={600} w={600}></Image>
+        <Image src="./landing.svg" h={600} w={600} visibleFrom="md"></Image>
       </Group>
       {/* </BackgroundImage> */}
     </AppShellMain>
