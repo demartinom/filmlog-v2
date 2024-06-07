@@ -7,7 +7,7 @@ export default function Home() {
     <AppShellMain>
       <Group
         gap={{ md: 100, lg: 200 }}
-        py={{ sm: 10, lg: 100 }}
+        py={{ sm: 100, md: 10, lg: 100 }}
         px={{ sm: 10, lg: 20 }}
       >
         <Stack
