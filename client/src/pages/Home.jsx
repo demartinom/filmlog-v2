@@ -7,7 +7,7 @@ export default function Home() {
     <AppShellMain>
       <Group
         gap={{ md: 100, lg: 200 }}
-        py={{ sm: 20, md: 40, lg: 100 }}
+        py={{ sm: 10, lg: 100 }}
         px={{ sm: 10, lg: 20 }}
       >
         <Stack
@@ -88,7 +88,7 @@ export default function Home() {
         h={400}
         w={400}
         hiddenFrom="lg"
-        visibleFrom="sm"
+        visibleFrom="md"
         m={"auto"}
       ></Image>
     </AppShellMain>
