@@ -36,7 +36,9 @@ export default function Explore() {
   useEffect(() => {
     async function getStocks() {
       try {
-        const res = await axios.get(`https://filmlogapi.vercel.app/api/films/all`);
+        const res = await axios.get(
+          `https://filmlogapi.vercel.app/api/films/all`
+        );
         setFilmStockData(res.data);
       } catch (error) {
         console.error(error);
@@ -76,7 +78,7 @@ export default function Explore() {
           {stock.name}
         </Title>
       </Card.Section>
-      <Button  m={"auto"} visibleFrom="lg">
+      <Button m={"auto"} visibleFrom="md">
         Learn More
       </Button>
     </Card>
@@ -119,7 +121,7 @@ export default function Explore() {
           </Stack>
         </Modal>
       )}
-      <Modal opened={compareModal} onClose={closeCompare} size={5000}>
+      <Modal opened={compareModal} onClose={closeCompare} size={{ lg: 5000 }}>
         <Compare data={filmStockData} />
       </Modal>
       <Stack align="center" mt={20}>
