@@ -34,9 +34,9 @@ const theme = createTheme({
   colors: { myColors },
   fontFamily: "nunito, sans-serif",
   breakpoints: {
-    xs: "425px",
+   
     sm: "425px",
-    md: "769px",
+    md: "768px",
     lg: "1025px",
     xl: "100em",
   },
