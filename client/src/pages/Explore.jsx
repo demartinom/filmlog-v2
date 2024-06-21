@@ -144,7 +144,7 @@ export default function Explore() {
       </Stack>
       <Center py={20}>
         {/* TODO: Make usuable for mobile */}
-        <Button onClick={openCompare} size="xl" visibleFrom="sm">
+        <Button onClick={openCompare} size="xl" visibleFrom="md">
           Compare Film Stocks
         </Button>
       </Center>
