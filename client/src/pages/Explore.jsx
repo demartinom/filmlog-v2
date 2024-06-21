@@ -17,6 +17,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Compare from "../components/Compare";
 import Loading from "../components/Loading";
+import { useResponsive } from "../helper-functions/mediaQueries";
 
 export default function Explore() {
   // State for information on all film stocks
@@ -31,6 +32,8 @@ export default function Explore() {
   // Open compare modal
   const [compareModal, { open: openCompare, close: closeCompare }] =
     useDisclosure(false);
+
+  const { isSmall, isMedium } = useResponsive();
 
   // api call to get all film stock data
   useEffect(() => {
@@ -74,11 +77,19 @@ export default function Explore() {
         </AspectRatio>
       </Card.Section>
       <Card.Section my={"auto"}>
-        <Title size={"h4"} ta={"center"} p={10}>
+        <Title
+          size={isSmall ? 8 : isMedium ? "14" : "h3"}
+          ta={"center"}
+          p={isSmall ? 0 : 10}
+          pt={isSmall ? 8 : 0}
+          style={{
+            whiteSpace: "pre-wrap",
+          }}
+        >
           {stock.name}
         </Title>
       </Card.Section>
-      <Button m={"auto"} visibleFrom="md">
+      <Button mt={"auto"} mx={"auto"} visibleFrom="md">
         Learn More
       </Button>
     </Card>
@@ -121,18 +132,19 @@ export default function Explore() {
           </Stack>
         </Modal>
       )}
-      <Modal opened={compareModal} onClose={closeCompare} size={{ lg: 5000 }}>
+      <Modal opened={compareModal} onClose={closeCompare} size={"80%"}>
         <Compare data={filmStockData} />
       </Modal>
       <Stack align="center" mt={20}>
         <Title size={"h2"}>Explore Film Stocks</Title>
-        <Title size="h3">
+        <Title size="h3" visibleFrom="sm" ta={"center"}>
           Here you can find a list of film stocks currently in production. Click
           on the card to learn more information.
         </Title>
       </Stack>
       <Center py={20}>
-        <Button onClick={openCompare} size="xl">
+        {/* TODO: Make usuable for mobile */}
+        <Button onClick={openCompare} size="xl" visibleFrom="sm">
           Compare Film Stocks
         </Button>
       </Center>
