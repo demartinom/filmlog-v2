@@ -148,7 +148,7 @@ export default function Explore() {
           Compare Film Stocks
         </Button>
       </Center>
-      <SimpleGrid cols={5} w={"80%"} m={"auto"} mb={20}>
+      <SimpleGrid cols={isSmall ? 3 : 5} w={"80%"} m={"auto"} mb={20}>
         {filmData}
       </SimpleGrid>
     </AppShellMain>
