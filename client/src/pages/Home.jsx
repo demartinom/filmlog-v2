@@ -88,7 +88,7 @@ export default function Home() {
         h={400}
         w={400}
         hiddenFrom="lg"
-        visibleFrom="sm"
+        visibleFrom="md"
         m={"auto"}
       ></Image>
     </AppShellMain>
