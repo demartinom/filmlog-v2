@@ -132,6 +132,46 @@ export default function Log({ data }) {
       </Table.Tr>
     );
   });
+
+  // Log data for mobile view
+  const mobileCards = rollData.map((roll) => {
+    let formattedDateStarted = formatDate(roll.dateStarted);
+    let formattedDateFinished =
+      roll.dateFinished === null
+        ? "In Progress"
+        : formatDate(roll.dateFinished);
+    return (
+      <Stack
+        key={roll.id}
+        style={{ border: "solid #aad9f0 2px", borderRadius: 10 }}
+        p={5}
+        gap={0}
+      >
+        {/* <Group justify="space-between"> */}
+        <Title size={"h4"}>{roll.film.name}</Title>
+        <Group>
+          {formattedDateStarted}-{formattedDateFinished}
+        </Group>
+        {/* </Group> */}
+        <Group justify="space-between">
+          {roll.format}
+          <Group justify="end">
+            <FaEdit
+              onClick={() => handleOpenEdit(roll)}
+              style={buttonStyles}
+              size={23}
+            ></FaEdit>
+            <FaTrashAlt
+              onClick={() => deleteRoll(roll.id)}
+              style={buttonStyles}
+              size={23}
+            ></FaTrashAlt>
+          </Group>
+        </Group>
+      </Stack>
+    );
+  });
+
   // Adds roll to database
   async function createRoll() {
     try {
@@ -181,14 +221,17 @@ export default function Log({ data }) {
         {/*TODO: Gray out readOnly values */}
         {/*TODO: Create notes section */}
         <Autocomplete
+          label="Film Stock"
           defaultValue={currentEdit == null ? "" : currentEdit.film.name}
           readOnly
         ></Autocomplete>
         <Autocomplete
+          label="Format"
           defaultValue={currentEdit == null ? "" : currentEdit.format}
           readOnly
         ></Autocomplete>
         <DatePickerInput
+          label="Date Started"
           value={
             currentEdit == null ? "" : formatDateData(currentEdit.dateStarted)
           }
@@ -200,6 +243,7 @@ export default function Log({ data }) {
           }
         ></DatePickerInput>
         <DatePickerInput
+            label="Date Finished"
           value={
             currentEdit == null || currentEdit.dateFinished == null
               ? null
@@ -244,9 +288,15 @@ export default function Log({ data }) {
         ></DatePickerInput>
         <Button onClick={createRoll}>Create</Button>
       </Modal>
-      <Stack align="center" py={"md"}>
+
+      <Stack align="center" py={"md"} m={"auto"}>
         <Title size={"h1"}>My Film</Title>
-        <Table highlightOnHover w={"75%"} verticalSpacing={"md"}>
+        <Table
+          highlightOnHover
+          w={"75%"}
+          verticalSpacing={"md"}
+          visibleFrom="md"
+        >
           <Table.Thead fz={"h3"} bg={"myColors.6"}>
             <Table.Tr>
               <Table.Th>Film Stock</Table.Th>
@@ -263,6 +313,14 @@ export default function Log({ data }) {
             size={"30"}
           ></FaPlusCircle>
         </Table>
+      </Stack>
+      <Stack hiddenFrom="md" px={20}>
+        {mobileCards}
+        <FaPlusCircle
+          onClick={newOpen}
+          style={{ ...buttonStyles, marginLeft: "10px" }}
+          size={"30"}
+        ></FaPlusCircle>
       </Stack>
     </AppShellMain>
   );
