@@ -25,7 +25,7 @@ export default function Footer() {
         >
           GitHub Repository
         </Anchor>
-        <Anchor underline="never" c={"black"} href="https://storyset.com/love">
+        <Anchor underline="never" c={"black"} href="https://storyset.com/love" visibleFrom="md">
           Home Page Illustration by Storyset
         </Anchor>
       </Group>
