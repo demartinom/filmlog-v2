@@ -49,6 +49,7 @@ model RollCount {
   filmStockId Int
   format      String
   count       Int
+  type        String
   filmStock   FilmStock @relation(fields: [filmStockId], references: [id])
 }
 
@@ -58,5 +59,6 @@ model UserCount {
   filmStockId Int
   count       Int
   format      String
+  type        String
   filmstock   FilmStock @relation(fields: [filmStockId], references: [id])
 }
