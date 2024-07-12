@@ -33,6 +33,7 @@ import makersRouter from "./routes/makers.js";
 import typesRouter from "./routes/types.js";
 import formatsRouter from "./routes/formats.js";
 import rollsRouter from "./routes/rolls.js";
+import statsRouter from './routes/stats.js'
 
 // Routers
 app.use("/api/films", filmsRouter);
@@ -40,6 +41,7 @@ app.use("/api/makers", makersRouter);
 app.use("/api/types", typesRouter);
 app.use("/api/formats", formatsRouter);
 app.use("/api/rolls", rollsRouter);
+app.use("/api/stats", statsRouter)
 
 const PORT = process.env.PORT || 3000;
 
