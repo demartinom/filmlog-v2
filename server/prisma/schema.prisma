@@ -54,7 +54,7 @@ model RollCount {
 
 model UserCount {
   id          Int       @id @unique @default(autoincrement())
-  userid      String
+  userId      String
   filmStockId Int
   count       Int
   format      String
