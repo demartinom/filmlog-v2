@@ -25,6 +25,9 @@ export default function Header({ data }) {
           <Text size="2rem">
             <Link to="/explore">Explore</Link>
           </Text>
+          <Text size="2rem">
+            <Link to="/stats">Roll Statistics</Link>
+          </Text>
           {data.session != null && (
             <Text size="2rem" onClick={logout} style={{ cursor: "pointer" }}>
               Log Out
@@ -40,6 +43,9 @@ export default function Header({ data }) {
             </Menu.Target>
             <Menu.Dropdown>
               <Menu.Item>
+                <Text size="2rem">
+                  <Link to="/explore">Explore</Link>
+                </Text>
                 <Text size="2rem">
                   <Link to="/explore">Explore</Link>
                 </Text>

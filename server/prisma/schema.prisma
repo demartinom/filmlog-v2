@@ -14,16 +14,18 @@ datasource db {
 }
 
 model FilmStock {
-  id      Int      @id @unique @default(autoincrement())
-  name    String
-  ISO     Int
-  maker   Maker    @relation(fields: [makerId], references: [id])
-  formats String[]
-  type    String
-  makerId Int
-  Roll    Roll[]
-  process String
-  img     String?
+  id        Int         @id @unique @default(autoincrement())
+  name      String
+  ISO       Int
+  maker     Maker       @relation(fields: [makerId], references: [id])
+  formats   String[]
+  type      String
+  makerId   Int
+  Roll      Roll[]
+  process   String
+  img       String?
+  RollCount RollCount[]
+  UserCount UserCount[]
 }
 
 model Maker {
@@ -38,6 +40,26 @@ model Roll {
   format       String    @default("N/A")
   dateStarted  DateTime  @default(now())
   dateFinished DateTime?
+  type         String
   filmId       Int
   userId       String
+}
+
+model RollCount {
+  id          Int       @id @unique @default(autoincrement())
+  filmStockId Int
+  format      String
+  count       Int
+  type        String
+  filmStock   FilmStock @relation(fields: [filmStockId], references: [id])
+}
+
+model UserCount {
+  id          Int       @id @unique @default(autoincrement())
+  userId      String
+  filmStockId Int
+  count       Int
+  format      String
+  type        String
+  filmstock   FilmStock @relation(fields: [filmStockId], references: [id])
 }

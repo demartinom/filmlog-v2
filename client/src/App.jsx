@@ -15,6 +15,7 @@ import Redirect from "./pages/Redirect";
 import Log from "./pages/Log";
 import Explore from "./pages/Explore";
 import { fetchData } from "./oauth";
+import Stats from "./pages/Stats";
 // Array of colors for custom theme
 const myColors = [
   "#e5f9ff",
@@ -73,6 +74,7 @@ function App() {
             ></Route>
             <Route element={<Redirect />} path="redirect"></Route>
             <Route element={<Explore />} path="explore"></Route>
+            <Route element={<Stats/>} path="stats"></Route>
           </Routes>
           <Footer />
         </AppShell>
