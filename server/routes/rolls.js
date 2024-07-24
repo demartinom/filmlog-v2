@@ -23,7 +23,8 @@ router.get("/:id", async (req, res) => {
 // Create a new roll
 router.post("/newroll", async (req, res) => {
   try {
-    let { filmStock, dateStarted, dateFinished, user, format } = req.body;
+    let { filmStock, dateStarted, dateFinished, user, format, filmType } =
+      req.body;
     await prisma.roll.create({
       data: {
         filmId: filmStock,
@@ -31,6 +32,7 @@ router.post("/newroll", async (req, res) => {
         format: format,
         dateFinished: dateFinished,
         userId: user,
+        type: filmType,
       },
     });
     res.json({ message: "Successfully added roll" });

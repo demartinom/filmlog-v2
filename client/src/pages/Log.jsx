@@ -180,6 +180,7 @@ export default function Log({ data }) {
         format: format,
         dateStarted: startDate,
         dateFinished: endDate,
+        filmType: currentFilm.type,
         user: data.session.user.id,
       };
       await axios.post(
