@@ -46,7 +46,7 @@ router.post("/newroll", async (req, res) => {
       },
     });
     await prisma.userCount.upsert({
-      where: { filmStockId: filmStock },
+      where: { userId_filmStockId: { userId: user, filmStockId: filmStock } },
       update: { count: { increment: 1 } },
       create: {
         filmStockId: filmStock,
