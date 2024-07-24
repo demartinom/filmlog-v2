@@ -42,7 +42,7 @@ router.post("/newroll", async (req, res) => {
         filmStockId: filmStock,
         format: format,
         count: 1,
-        type: type,
+        type: filmType,
       },
     });
     await prisma.userCount.upsert({
@@ -52,7 +52,7 @@ router.post("/newroll", async (req, res) => {
         filmStockId: filmStock,
         format: format,
         count: 1,
-        type: type,
+        type: filmType,
       },
     });
     res.json({ message: "Successfully added roll" });
