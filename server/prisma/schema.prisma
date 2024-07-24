@@ -46,6 +46,8 @@ model RollCount {
   count       Int
   type        String
   filmStock   FilmStock @relation(fields: [filmStockId], references: [id])
+
+  @@unique([filmStockId, format])
 }
 
 model UserCount {
