@@ -56,4 +56,6 @@ model UserCount {
   userId      String
   type        String
   filmstock   FilmStock @relation(fields: [filmStockId], references: [id])
+
+  @@unique([filmStockId, userId])
 }
