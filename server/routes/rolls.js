@@ -35,6 +35,26 @@ router.post("/newroll", async (req, res) => {
         type: filmType,
       },
     });
+    await prisma.rollCount.upsert({
+      where: { filmStockId: filmId },
+      update: { count: { increment: 1 } },
+      create: {
+        filmStockId: filmId,
+        format: format,
+        count: 1,
+        type: type,
+      },
+    });
+    await prisma.userCount.upsert({
+      where: { filmStockId: filmId },
+      update: { count: { increment: 1 } },
+      create: {
+        filmStockId: filmId,
+        format: format,
+        count: 1,
+        type: type,
+      },
+    });
     res.json({ message: "Successfully added roll" });
   } catch (error) {
     console.error("Error creating new roll:", error);
