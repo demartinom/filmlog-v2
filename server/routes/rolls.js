@@ -65,7 +65,9 @@ router.post("/newroll", async (req, res) => {
     res.json({ message: "Successfully added roll" });
   } catch (error) {
     console.error("Error creating new roll:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res
+      .status(500)
+      .json({ error: "Internal server error", details: error.message });
   }
 });
 
