@@ -22,54 +22,49 @@ router.get("/:id", async (req, res) => {
 
 // Create a new roll
 router.post("/newroll", async (req, res) => {
+  const { filmStock, dateStarted, dateFinished, user, format, filmType } =
+    req.body;
+
   try {
-    let { filmStock, dateStarted, dateFinished, user, format, filmType } =
-      req.body;
-    await prisma.roll.create({
-      data: {
-        filmId: filmStock,
-        dateStarted: dateStarted,
-        format: format,
-        dateFinished: dateFinished,
-        userId: user,
-        type: filmType,
-      },
+    await prisma.$transaction(async (prisma) => {
+      await prisma.roll.create({
+        data: {
+          filmId: filmStock,
+          dateStarted: dateStarted,
+          format: format,
+          dateFinished: dateFinished,
+          userId: user,
+          type: filmType,
+        },
+      });
+
+      await prisma.rollCount.upsert({
+        where: { filmStockId: filmStock },
+        update: { count: { increment: 1 } },
+        create: {
+          filmStockId: filmStock,
+          format: format,
+          count: 1,
+          type: filmType,
+        },
+      });
+
+      await prisma.userCount.upsert({
+        where: { filmStockId_userId: { filmStockId: filmStock, userId: user } },
+        update: { count: { increment: 1 } },
+        create: {
+          filmStockId: filmStock,
+          userId: user,
+          format: format,
+          count: 1,
+          type: filmType,
+        },
+      });
     });
-    await prisma.rollCount.upsert({
-      where: { filmStockId: filmStock },
-      update: { count: { increment: 1 } },
-      create: {
-        filmStockId: filmStock,
-        format: format,
-        count: 1,
-        type: filmType,
-      },
-    });
-    await prisma.userCount.upsert({
-      where: { userId_filmStockId: { userId: user, filmStockId: filmStock } },
-      update: { count: { increment: 1 } },
-      create: {
-        filmStockId: filmStock,
-        format: format,
-        count: 1,
-        type: filmType,
-      },
-    });
+
     res.json({ message: "Successfully added roll" });
   } catch (error) {
     console.error("Error creating new roll:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-// Delete a roll by roll ID
-router.delete("/deleteroll/:rollid", async (req, res) => {
-  try {
-    let { rollid } = req.params;
-    await prisma.roll.delete({ where: { id: parseInt(rollid) } });
-    res.json({ message: "Successfully deleted roll", rollid });
-  } catch (error) {
-    console.error("Error deleting roll:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
