@@ -94,4 +94,10 @@ router.patch("/editroll/:rollId", async (req, res) => {
   }
 });
 
+router.delete("/deleteroll/:rollid", async (req, res) => {
+  let { rollid } = req.params;
+  await prisma.roll.delete({ where: { id: parseInt(rollid) } });
+  res.json({ message: "successfully deleted roll", rollid });
+});
+
 export default router;
