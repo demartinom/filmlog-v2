@@ -124,7 +124,7 @@ export default function Log({ data }) {
             size={23}
           ></FaEdit>
           <FaTrashAlt
-            onClick={() => deleteRoll(roll.id)}
+            onClick={() => deleteRoll(roll)}
             style={buttonStyles}
             size={23}
           ></FaTrashAlt>
@@ -194,10 +194,16 @@ export default function Log({ data }) {
     }
   }
   // Deletes roll from database
-  async function deleteRoll(id) {
+  async function deleteRoll(roll) {
     try {
+      const rollData = {
+        userId: data.session.user.id,
+        format: roll.format,
+        filmStockId: roll.filmStock,
+      };
       await axios.delete(
-        `https://filmlogapi.vercel.app/api/rolls/deleteroll/${id}`
+        `https://filmlogapi.vercel.app/api/rolls/deleteroll/${roll.id}`,
+        rollData
       );
       window.location.reload();
     } catch (error) {
@@ -244,7 +250,7 @@ export default function Log({ data }) {
           }
         ></DatePickerInput>
         <DatePickerInput
-            label="Date Finished"
+          label="Date Finished"
           value={
             currentEdit == null || currentEdit.dateFinished == null
               ? null

@@ -96,7 +96,20 @@ router.patch("/editroll/:rollId", async (req, res) => {
 
 router.delete("/deleteroll/:rollid", async (req, res) => {
   let { rollid } = req.params;
+  let { userId, format, filmStockId } = req.body;
   await prisma.roll.delete({ where: { id: parseInt(rollid) } });
+
+  await prisma.rollCount.update({
+    where: {
+      filmStockId_format: { filmStockId: filmStockId, format: format },
+    },
+    data: { count: { decrement: 1 } },
+  });
+
+  await prisma.userCount.update({
+    where: { filmStockId_userId: { filmStockId: filmStockId, userId: userId } },
+    data: { count: { decrement: 1 } },
+  });
   res.json({ message: "successfully deleted roll", rollid });
 });
 
