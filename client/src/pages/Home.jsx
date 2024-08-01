@@ -1,24 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { signInWithGitHub, signInWithGoogle, signInAnonymous } from "../oauth";
 import { Text, AppShellMain, Stack, Group, Button, Image } from "@mantine/core";
-import axios from "axios";
-import { useEffect } from "react";
 
-export default function Home() {
-  let [rollsStats, setRollsStats] = useState({});
-
-  async function getRollCount() {
-    try {
-      let res = await axios.get("https://filmlogapi.vercel.app/api/stats/all");
-      setRollsStats(res.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getRollCount();
-  }, []);
+export default function Home({ rollsStats }) {
   return (
     <AppShellMain>
       <Group

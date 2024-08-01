@@ -16,6 +16,8 @@ import Log from "./pages/Log";
 import Explore from "./pages/Explore";
 import { fetchData } from "./oauth";
 import Stats from "./pages/Stats";
+import axios from "axios";
+
 // Array of colors for custom theme
 const myColors = [
   "#e5f9ff",
@@ -35,7 +37,6 @@ const theme = createTheme({
   colors: { myColors },
   fontFamily: "nunito, sans-serif",
   breakpoints: {
-   
     sm: "425px",
     md: "768px",
     lg: "1025px",
@@ -46,12 +47,25 @@ const theme = createTheme({
 function App() {
   // User data
   const [userData, setUserData] = useState({ session: null });
+  //All roll stats data
+  let [rollsStats, setRollsStats] = useState({});
+
+  // API call for all rolls stats
+  async function getRollCount() {
+    try {
+      let res = await axios.get("https://filmlogapi.vercel.app/api/stats/all");
+      setRollsStats(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   // Fetch user data on page load
   useEffect(() => {
     const getData = async () => {
       const newData = await fetchData();
       setUserData(newData);
+      getRollCount();
     };
     getData();
   }, []);
@@ -69,12 +83,16 @@ function App() {
             <Route
               index
               element={
-                userData.session == null ? <Home /> : <Log data={userData} />
+                userData.session == null ? (
+                  <Home rollsStats={rollsStats} />
+                ) : (
+                  <Log data={userData} />
+                )
               }
             ></Route>
             <Route element={<Redirect />} path="redirect"></Route>
             <Route element={<Explore />} path="explore"></Route>
-            <Route element={<Stats/>} path="stats"></Route>
+            <Route element={<Stats />} path="stats"></Route>
           </Routes>
           <Footer />
         </AppShell>
