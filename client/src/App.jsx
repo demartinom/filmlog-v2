@@ -92,7 +92,10 @@ function App() {
             ></Route>
             <Route element={<Redirect />} path="redirect"></Route>
             <Route element={<Explore />} path="explore"></Route>
-            <Route element={<Stats />} path="stats"></Route>
+            <Route
+              element={<Stats allRolls={rollsStats} />}
+              path="stats"
+            ></Route>
           </Routes>
           <Footer />
         </AppShell>
