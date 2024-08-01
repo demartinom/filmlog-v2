@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { signInWithGitHub, signInWithGoogle, signInAnonymous } from "../oauth";
 import { Text, AppShellMain, Stack, Group, Button, Image } from "@mantine/core";
+import axios from "axios";
+import { useEffect } from "react";
 
 export default function Home() {
+  let [rollsStats, setRollsStats] = useState({});
+
+  async function getRollCount() {
+    try {
+      let res = await axios.get("https://filmlogapi.vercel.app/api/stats/all");
+      setRollsStats(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getRollCount();
+  }, []);
   return (
     <AppShellMain>
       <Group
@@ -22,6 +38,9 @@ export default function Home() {
           <Text size="2rem" ta={{ sm: "center", lg: "left" }}>
             A place where film enthusiasts can learn about the exciting world of
             film and track their film rolls.
+          </Text>
+          <Text size="2rem" ta={{ sm: "center", lg: "left" }}>
+            {rollsStats.totalRolls} rolls logged and counting!
           </Text>
           <Group mt={50} visibleFrom="xl">
             <Button
