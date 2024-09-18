@@ -18,6 +18,7 @@ import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
 import { formatDate } from "../helper-functions/formatDate";
 import { formatDateData } from "../helper-functions/formatDateData";
 import Loading from "../components/Loading";
+import { fetchData } from "../helper-functions/apiCalls";
 
 export default function Log({ data }) {
   //Mantine Theme Hook and button color
@@ -53,19 +54,11 @@ export default function Log({ data }) {
 
   //Fetch rolls associated with user
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `https://filmlogapi.vercel.app/api/rolls/${data.session.user.id}`
-        );
-        setRollData(res.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false); // Set loading to false once API call is complete
-      }
-    };
-    fetchData();
+    if (data.session.user?.id) {
+      fetchData(data.session.user.id, setRollData).finally(() => {
+        setLoading(false); // Set loading to false after API call
+      });
+    }
   }, []);
 
   // Fetch data for all film stocks in database
