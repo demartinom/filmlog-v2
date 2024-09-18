@@ -93,7 +93,7 @@ function App() {
             <Route element={<Redirect />} path="redirect"></Route>
             <Route element={<Explore />} path="explore"></Route>
             <Route
-              element={<Stats allRolls={rollsStats} />}
+              element={<Stats allRolls={rollsStats} user={userData.session} />}
               path="stats"
             ></Route>
           </Routes>
