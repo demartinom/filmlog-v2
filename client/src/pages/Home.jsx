@@ -23,7 +23,7 @@ export default function Home() {
             A place where film enthusiasts can learn about the exciting world of
             film and track their film rolls.
           </Text>
-          <Group mt={50} visibleFrom="xl">
+          <Group mt={50} visibleFrom="lg">
             <Button
               bg={"myColors.6"}
               size={"xl"}
@@ -88,7 +88,6 @@ export default function Home() {
         h={400}
         w={400}
         hiddenFrom="lg"
-        visibleFrom="md"
         m={"auto"}
       ></Image>
     </AppShellMain>
