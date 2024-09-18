@@ -91,7 +91,6 @@ export default function Home({ rollsStats }) {
         h={400}
         w={400}
         hiddenFrom="lg"
-        visibleFrom="md"
         m={"auto"}
       ></Image>
     </AppShellMain>
