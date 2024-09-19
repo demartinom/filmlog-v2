@@ -87,7 +87,7 @@ export default function Log({ data }) {
 
   // Set the currently selected film stock in forms
   function handleCurrentFilm(current) {
-    let selectedFilm = allFilm.find((stock) => stock.name == current);
+    let selectedFilm = allFilm.find((stock) => stock.name === current);
     setCurrentFilm(selectedFilm);
   }
   // Populate edit modal before opening
