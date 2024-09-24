@@ -1,7 +1,17 @@
 import { AppShellMain, Center, Title, Text, Stack, Group } from "@mantine/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { fetchUserStats } from "../helper-functions/apiCalls";
 
-export default function Stats({ allRolls, user }) {
+export default function Stats({ allRolls, userSession }) {
+  const [userData, setUserData] = useState({});
+
+  // API call to receive user stats
+  useEffect(() => {
+    if (userSession?.user?.id) {
+      fetchUserStats(userSession.user.id, setUserData);
+    }
+  }, [userSession]);
+
   return (
     <AppShellMain>
       <Center>
@@ -15,7 +25,7 @@ export default function Stats({ allRolls, user }) {
               FilmLog&apos;s most popular film stock:{" "}
               {allRolls.mostPopularStock}
             </Text>
-            {user && <Text>Your most popular film stock: </Text>}
+            {userSession && <Text>Your most popular film stock: </Text>}
           </Group>
           <Group>
             <Text>
