@@ -18,7 +18,7 @@ import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
 import { formatDate } from "../helper-functions/formatDate";
 import { formatDateData } from "../helper-functions/formatDateData";
 import Loading from "../components/Loading";
-import { fetchData } from "../helper-functions/apiCalls";
+import { fetchUserRolls } from "../helper-functions/apiCalls";
 
 export default function Log({ data }) {
   //Mantine Theme Hook and button color
@@ -55,7 +55,7 @@ export default function Log({ data }) {
   //Fetch rolls associated with user
   useEffect(() => {
     if (data.session.user?.id) {
-      fetchData(data.session.user.id, setRollData).finally(() => {
+      fetchUserRolls(data.session.user.id, setRollData).finally(() => {
         setLoading(false); // Set loading to false after API call
       });
     }

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchData = async (userID, setState) => {
+export const fetchUserRolls = async (userID, setState) => {
   try {
     const res = await axios.get(
       `https://filmlogapi.vercel.app/api/rolls/${userID}`
