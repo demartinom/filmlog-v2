@@ -25,18 +25,20 @@ export default function Stats({ allRolls, userSession }) {
               FilmLog&apos;s most popular film stock:{" "}
               {allRolls.mostPopularStock}
             </Text>
-            {userSession && <Text>Your most popular film stock: </Text>}
+            {userSession && <Text>Your most popular film stock: {userData.mostPopularStock}</Text>}
           </Group>
           <Group>
             <Text>
               FilmLog&apos;s most popular film format:{" "}
               {allRolls.mostPopularFormat}
             </Text>
+            {userSession && <Text>Your most popular film format: {userData.mostPopularFormat}</Text>}
           </Group>
           <Group>
             <Text>
               FilmLog&apos;s most popular film type: {allRolls.mostPopularType}
             </Text>
+            {userSession && <Text>Your most popular film type: {userData.mostPopularType}</Text>}
           </Group>
         </Stack>
       </Center>
