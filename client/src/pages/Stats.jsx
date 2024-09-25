@@ -1,11 +1,4 @@
-import {
-  AppShellMain,
-  Center,
-  Title,
-  Text,
-  Stack,
-  Paper,
-} from "@mantine/core";
+import { AppShellMain, Center, Title, Text, Stack, Paper } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import { fetchUserStats } from "../helper-functions/apiCalls";
 
@@ -22,7 +15,13 @@ export default function Stats({ allRolls, userSession }) {
   return (
     <AppShellMain>
       <Center>
-        <Title mt={20}>Roll Statistics</Title>
+        <Stack ta={"center"}>
+          <Title mt={20}>Roll Statistics</Title>
+          <Title size={25}>
+            Check out your personal stats (when you&apos;re logged in) and see
+            how all FilmLog users are doing!
+          </Title>
+        </Stack>
       </Center>
       <Center>
         <Stack ta={"center"} gap={30} mt={40}>
