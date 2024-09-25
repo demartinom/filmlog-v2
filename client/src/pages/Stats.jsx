@@ -1,4 +1,11 @@
-import { AppShellMain, Center, Title, Text, Stack, Group } from "@mantine/core";
+import {
+  AppShellMain,
+  Center,
+  Title,
+  Text,
+  Stack,
+  Paper,
+} from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import { fetchUserStats } from "../helper-functions/apiCalls";
 
@@ -15,45 +22,79 @@ export default function Stats({ allRolls, userSession }) {
   return (
     <AppShellMain>
       <Center>
-        <Title>Roll Statistics</Title>
+        <Title mt={20}>Roll Statistics</Title>
       </Center>
       <Center>
-        <Stack ta={"center"}>
-          <Title>Total Rolls logged in FilmLog: {allRolls.totalRolls}</Title>
-          <Group>
-            <Text>
+        <Stack ta={"center"} gap={30} mt={40}>
+          <Paper
+            justify="space-between"
+            withBorder
+            radius={"md"}
+            shadow="md"
+            p={20}
+          >
+            <Text size="lg">
+              <b>Total rolls logged on FilmLog:</b> {allRolls.totalRolls}
+            </Text>
+            {userSession && (
+              <Text size="lg">
+                <b>Total rolls you have logged on FilmLog:</b>{" "}
+                {userData.totalRolls}
+              </Text>
+            )}
+          </Paper>
+          <Paper
+            justify="space-between"
+            withBorder
+            radius={"md"}
+            shadow="md"
+            p={20}
+          >
+            <Text size="lg">
               <b>FilmLog&apos;s most popular film stock:</b>{" "}
               {allRolls.mostPopularStock}
             </Text>
             {userSession && (
-              <Text>
+              <Text size="lg">
                 <b>Your most popular film stock:</b> {userData.mostPopularStock}
               </Text>
             )}
-          </Group>
-          <Group>
-            <Text>
+          </Paper>
+          <Paper
+            justify="space-between"
+            withBorder
+            radius={"md"}
+            shadow="md"
+            p={20}
+          >
+            <Text size="lg">
               <b>FilmLog&apos;s most popular film format:</b>{" "}
               {allRolls.mostPopularFormat}
             </Text>
             {userSession && (
-              <Text>
+              <Text size="lg">
                 <b>Your most popular film format:</b>{" "}
                 {userData.mostPopularFormat}
               </Text>
             )}
-          </Group>
-          <Group>
-            <Text>
+          </Paper>
+          <Paper
+            justify="space-between"
+            withBorder
+            radius={"md"}
+            shadow="md"
+            p={20}
+          >
+            <Text size="lg">
               <b>FilmLog&apos;s most popular film type:</b>{" "}
               {allRolls.mostPopularType}
             </Text>
             {userSession && (
-              <Text>
+              <Text size="lg">
                 <b>Your most popular film type:</b> {userData.mostPopularType}
               </Text>
             )}
-          </Group>
+          </Paper>
         </Stack>
       </Center>
     </AppShellMain>
