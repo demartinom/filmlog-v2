@@ -138,8 +138,8 @@ export default function Explore() {
       <Stack align="center" mt={20}>
         <Title size={"h2"}>Explore Film Stocks</Title>
         <Title size="h3" visibleFrom="sm" ta={"center"}>
-          Here you can find a list of film stocks currently in production. Click
-          on the card to learn more information.
+          Discover the film stocks still in production today. Click on any card
+          to dive deeper and see more details
         </Title>
       </Stack>
       <Center py={20}>
