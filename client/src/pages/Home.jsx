@@ -2,7 +2,7 @@ import React from "react";
 import { signInWithGitHub, signInWithGoogle, signInAnonymous } from "../oauth";
 import { Text, AppShellMain, Stack, Group, Button, Image } from "@mantine/core";
 
-export default function Home() {
+export default function Home({ rollsStats }) {
   return (
     <AppShellMain>
       <Group
@@ -23,7 +23,10 @@ export default function Home() {
             A place where film enthusiasts can learn about the exciting world of
             film and track their film rolls.
           </Text>
-          <Group mt={50} visibleFrom="lg">
+          <Text size="2rem" ta={{ sm: "center", lg: "left" }}>
+            {rollsStats.totalRolls} rolls logged and counting!
+          </Text>
+          <Group mt={50} visibleFrom="xl">
             <Button
               bg={"myColors.6"}
               size={"xl"}

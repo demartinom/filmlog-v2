@@ -18,6 +18,7 @@ import { FaEdit, FaTrashAlt, FaPlusCircle } from "react-icons/fa";
 import { formatDate } from "../helper-functions/formatDate";
 import { formatDateData } from "../helper-functions/formatDateData";
 import Loading from "../components/Loading";
+import { fetchUserRolls } from "../helper-functions/apiCalls";
 
 export default function Log({ data }) {
   //Mantine Theme Hook and button color
@@ -53,19 +54,11 @@ export default function Log({ data }) {
 
   //Fetch rolls associated with user
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `https://filmlogapi.vercel.app/api/rolls/${data.session.user.id}`
-        );
-        setRollData(res.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false); // Set loading to false once API call is complete
-      }
-    };
-    fetchData();
+    if (data.session.user?.id) {
+      fetchUserRolls(data.session.user.id, setRollData).finally(() => {
+        setLoading(false); // Set loading to false after API call
+      });
+    }
   }, []);
 
   // Fetch data for all film stocks in database
@@ -94,7 +87,7 @@ export default function Log({ data }) {
 
   // Set the currently selected film stock in forms
   function handleCurrentFilm(current) {
-    let selectedFilm = allFilm.find((stock) => stock.name == current);
+    let selectedFilm = allFilm.find((stock) => stock.name === current);
     setCurrentFilm(selectedFilm);
   }
   // Populate edit modal before opening
@@ -124,7 +117,7 @@ export default function Log({ data }) {
             size={23}
           ></FaEdit>
           <FaTrashAlt
-            onClick={() => deleteRoll(roll.id)}
+            onClick={() => deleteRoll(roll)}
             style={buttonStyles}
             size={23}
           ></FaTrashAlt>
@@ -194,10 +187,16 @@ export default function Log({ data }) {
     }
   }
   // Deletes roll from database
-  async function deleteRoll(id) {
+  async function deleteRoll(roll) {
     try {
+      const rollData = {
+        userId: data.session.user.id,
+        format: roll.format,
+        filmStockId: roll.filmStock,
+      };
       await axios.delete(
-        `https://filmlogapi.vercel.app/api/rolls/deleteroll/${id}`
+        `https://filmlogapi.vercel.app/api/rolls/deleteroll/${roll.id}`,
+        rollData
       );
       window.location.reload();
     } catch (error) {
@@ -244,7 +243,7 @@ export default function Log({ data }) {
           }
         ></DatePickerInput>
         <DatePickerInput
-            label="Date Finished"
+          label="Date Finished"
           value={
             currentEdit == null || currentEdit.dateFinished == null
               ? null
