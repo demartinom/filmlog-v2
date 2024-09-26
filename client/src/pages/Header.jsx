@@ -48,6 +48,11 @@ export default function Header({ data }) {
                 </Text>
               </Menu.Item>
               <Menu.Item>
+                <Text size="2rem">
+                  <Link to="/stats">Statistics</Link>
+                </Text>
+              </Menu.Item>
+              <Menu.Item>
                 {data.session != null && (
                   <Text
                     size="2rem"
